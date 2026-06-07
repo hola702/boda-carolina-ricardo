@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -100,22 +101,119 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 
 @media(max-width:560px){
   .page{width:100%}
-  .hero{min-height:650px;padding:54px 15px 36px}
-  .hero .bg-img{object-position:center center}
-  .names{font-size:4.35rem}
-  .pill{font-size:.75rem;padding:10px 24px;letter-spacing:.18em}
-  .count{min-width:72px;padding:0 7px}
-  .count strong{font-size:1.55rem}
+
+  /* Encabezado móvil: mostrar imagen completa para que se aprecien proyector y flores */
+  .hero{
+    min-height:620px;
+    padding:52px 15px 34px;
+    background:#d6bc8a;
+  }
+  .hero .bg-img{
+    object-fit:contain;
+    object-position:top center;
+    background:#d6bc8a;
+  }
+  .hero .content{
+    max-width:92%;
+  }
+  .kicker{
+    font-size:.72rem;
+    max-width:320px;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:1.35;
+  }
+  .names{
+    font-size:3.95rem;
+    line-height:.86;
+    margin-top:26px;
+  }
+  .pill{
+    font-size:.68rem;
+    padding:9px 22px;
+    letter-spacing:.16em;
+  }
+  .hero-copy{
+    font-size:.82rem;
+    line-height:1.65;
+    max-width:330px;
+  }
+  .count-title{
+    font-size:.68rem;
+  }
+  .count{
+    min-width:68px;
+    padding:0 6px;
+  }
+  .count strong{
+    font-size:1.42rem;
+  }
+  .count span{
+    font-size:.58rem;
+  }
+
   .film-window{height:295px}
   .frame{width:82vw}
-  .details{min-height:720px}
-  .details .content{grid-template-columns:1fr;gap:20px;padding:46px 22px 34px}
-  .detail-card{min-height:300px}
-  .detail-graphic{width:150px;height:95px}
-  .detail-card.right .detail-graphic{width:260px}
+
+  /* Ceremonia/recepción móvil: mantener dos columnas, no apilar */
+  .details{
+    min-height:390px;
+  }
+  .details .content{
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    min-height:390px;
+    padding:44px 12px 26px;
+    align-items:start;
+  }
+  .detail-card{
+    min-height:300px;
+    padding:0 6px;
+  }
+  .detail-graphic{
+    width:82px;
+    height:62px;
+    margin-bottom:4px;
+  }
+  .detail-card.right .detail-graphic{
+    width:132px;
+    height:62px;
+  }
+  .detail-card h2{
+    font-size:1.9rem;
+    line-height:.9;
+    margin:4px 0 12px;
+  }
+  .detail-card .place{
+    font-size:.52rem;
+    line-height:1.35;
+    letter-spacing:.05em;
+    margin-bottom:10px;
+  }
+  .detail-card .meta{
+    font-size:.48rem;
+    line-height:1.4;
+    margin-bottom:12px;
+  }
+  .details .btn{
+    font-size:.52rem;
+    padding:8px 12px;
+    letter-spacing:.04em;
+  }
+
   .extras-grid{grid-template-columns:1fr 1fr}
   .extra:nth-child(2){border-right:0}
   .extra:nth-child(1),.extra:nth-child(2){border-bottom:1px solid rgba(195,154,97,.32)}
+
+  .rsvp h2{
+    font-size:1.8rem;
+  }
+  .footer{
+    min-height:220px;
+  }
+  .footer .content{
+    padding:34px 18px 22px;
+  }
 }
 </style>
 </head>
@@ -356,7 +454,7 @@ tick(); setInterval(tick,1000);
   }
   // Intento automático.
   window.addEventListener("load", () => {
-    setTimeout(loadYT, 600);
+    setTimeout(loadYT, 900);
   });
   // Respaldo: si el navegador bloquea audio, se activa con la primera interacción.
   ["click","touchstart","scroll"].forEach(evt => {
