@@ -1,2 +1,3 @@
 # boda-carolina-ricardo
-Invitación de boda Carolina &amp; Ricardo
+
+Invitación de boda Carolina & Ricardo.
