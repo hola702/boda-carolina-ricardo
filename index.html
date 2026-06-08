@@ -19,6 +19,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 .content{position:relative;z-index:2}
 .script{font-family:'Great Vibes',cursive}
 .noise:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.11;background-image:radial-gradient(rgba(255,255,255,.25) 1px,transparent 1px);background-size:3px 3px;mix-blend-mode:screen;z-index:3}
+.wa-icon{width:18px;height:18px;display:inline-block;vertical-align:middle}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;background:#16110d;color:var(--gold2);border:1px solid rgba(195,154,97,.45);text-decoration:none;font-family:'Special Elite',monospace;text-transform:uppercase;letter-spacing:.06em;padding:12px 28px;font-size:.78rem;box-shadow:0 12px 24px rgba(0,0,0,.25);cursor:pointer}
 .divider{display:flex;align-items:center;justify-content:center;gap:18px;margin:12px 0}
 .divider:before,.divider:after{content:"";width:90px;height:1px;background:rgba(30,21,13,.35)}
@@ -27,7 +28,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 #ytHolder{position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden}
 .audioHint{position:fixed;right:12px;bottom:12px;z-index:50;background:rgba(8,7,6,.86);color:#d7bc8a;border:1px solid rgba(195,154,97,.45);border-radius:999px;padding:9px 13px;font-family:'Special Elite',monospace;font-size:.62rem;display:block;box-shadow:0 8px 24px rgba(0,0,0,.35)}
 
-.hero{min-height:520px;padding:48px 20px 24px;text-align:center;color:var(--ink);border:1px solid rgba(195,154,97,.22);background:#d4b784}
+.hero{min-height:520px;padding:48px 20px 24px;text-align:center;color:var(--ink);border:0;background:#d4b784}
 .hero .bg-img{object-position:center center}
 .hero .content{max-width:650px;margin:0 auto}
 .kicker{font-family:'Special Elite',monospace;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
@@ -107,7 +108,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   .count strong{font-size:1.42rem}
   .count span{font-size:.58rem}
   .countdown{margin-bottom:28px}
-  .film-window{height:295px}
+  .film-reel{height:363px}.track{height:295px}
   .frame{width:82vw}
   .details{
     min-height:640px;
@@ -195,8 +196,10 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 </section>
 
 <section class="section film-section noise">
-  <div class="film-hole"></div>
-  <div class="film-window"><div class="track">
+  <div class="film-reel">
+    <div class="film-moving">
+      <div class="sprocket-row"></div>
+      <div class="track">
 <div class="frame"><img src="fotos/portada.jpg" alt="Nuestra historia empieza con una sonrisa"><div class="photo-title">Nuestra historia empieza con una sonrisa</div></div>
 <div class="frame"><img src="fotos/01.jpg" alt="Dos caminos se encontraron"><div class="photo-title">Dos caminos se encontraron</div></div>
 <div class="frame"><img src="fotos/02.jpg" alt="Comenzaron las aventuras"><div class="photo-title">Comenzaron las aventuras</div></div>
@@ -223,8 +226,10 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 <div class="frame"><img src="fotos/10.jpg" alt="El siguiente capítulo comienza"><div class="photo-title">El siguiente capítulo comienza</div></div>
 <div class="frame"><img src="fotos/11.jpg" alt="La función está por comenzar"><div class="photo-title">La función está por comenzar</div></div>
 <div class="frame"><img src="fotos/12.jpg" alt="Gracias por ser parte"><div class="photo-title">Gracias por ser parte</div></div>
-  </div></div>
-  <div class="film-hole bottom"></div>
+      </div>
+      <div class="sprocket-row bottom"></div>
+    </div>
+  </div>
   <div class="film-caption">
     <div class="story-btn">Nuestra historia ▷</div>
     <div class="film-note">← Disfruta el recorrido →</div>
@@ -238,14 +243,14 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
       <img class="detail-graphic" src="activos/iglesia.png" alt="">
       <h2 class="script">Ceremonia Religiosa</h2>
       <div class="place">Capilla de Pinar de la Venta</div>
-      <div class="meta">▣ 24 de octubre, 2026 | ◷ 4:00 p.m.</div>
+      <div class="meta">▣ 24 de octubre, 2026 | ◷ 5:00 p.m.</div>
       <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Capilla%20de%20Pinar%20de%20la%20Venta" target="_blank">⌖ Cómo llegar</a>
     </article>
     <article class="detail-card right">
       <img class="detail-graphic" src="activos/recepcion.png" alt="">
       <h2 class="script">Recepción</h2>
       <div class="place">Campestre Cd. Granja</div>
-      <div class="meta">&nbsp;</div>
+      <div class="meta">▣ 24 de octubre, 2026 | ◷ 5:30 p.m.</div>
       <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Campestre%20Cd.%20Granja" target="_blank">⌖ Ver ubicación</a>
     </article>
   </div>
@@ -253,10 +258,10 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 
 <section class="section extras noise">
   <div class="content extras-grid">
-    <div class="extra"><img src="iconos/dress.png" alt=""><h3>Dress Code</h3><p>Formal elegante</p><a href="#">Ver más</a></div>
-    <div class="extra"><img src="iconos/regalo.png" alt=""><h3>Mesa de regalos</h3><p>Tu presencia es nuestro mejor regalo</p><a href="#">Ver más</a></div>
-    <div class="extra"><img src="iconos/cama.png" alt=""><h3>Hospedaje</h3><p>Opciones recomendadas para tu estancia</p><a href="#">Ver más</a></div>
-    <div class="extra"><img src="iconos/camara.png" alt=""><h3>Comparte tus fotos</h3><p>Usa nuestro hashtag #CarolinayRicardo</p><a href="#">Ver más</a></div>
+    <div class="extra"><img src="iconos/dress.png" alt=""><h3>Dress Code</h3><p>Formal elegante<br>No niños</p></div>
+    <div class="extra"><img src="iconos/regalo.png" alt=""><h3>Mesa de regalos</h3><p>Tu presencia es nuestro mejor regalo</p><a href="https://www.amazon.com.mx/wedding" target="_blank">Ver más</a></div>
+    <div class="extra"><img src="iconos/cama.png" alt=""><h3>Hospedaje</h3><p>Opciones recomendadas para tu estancia</p><a href="https://www.google.com/maps/search/?api=1&query=hoteles%20cerca%20de%20Pinar%20de%20la%20Venta%20Zapopan" target="_blank">Ver más</a></div>
+    <div class="extra"><img src="iconos/camara.png" alt=""><h3>Comparte tus fotos</h3><p>Sube tus recuerdos al álbum</p><a href="https://photos.app.goo.gl/8xwqcfBT6UX9KDf78" target="_blank">Ver más</a></div>
   </div>
 </section>
 
@@ -264,8 +269,8 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   <img class="bg-img" src="activos/medio-bajo.jpg" alt="">
   <div class="content">
     <h2 class="script">Tu presencia es muy importante para nosotros</h2>
-    <a class="btn" href="https://wa.me/523312523942?text=Hola%20Carolina%20y%20Ricardo.%20Confirmo%20mi%20asistencia%20a%20su%20boda.%20Nombre%3A%20%20N%C3%BAmero%20de%20asistentes%3A%20" target="_blank">☏ Confirmar asistencia</a>
-    <div class="note">O haz clic aquí para llenar el formulario ▷</div>
+    <a class="btn" href="https://wa.me/523312523942?text=Hola%20Carolina%20y%20Ricardo.%20Confirmo%20mi%20asistencia%20a%20su%20boda.%20Nombre%3A%20%20N%C3%BAmero%20de%20asistentes%3A%20" target="_blank"><svg class="wa-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M18.5 51.5 21.2 42A22.5 22.5 0 1 1 30.8 47L18.5 51.5Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M26.4 21.8c-1.1.5-2.3 2.6-2.1 4.7.4 4.7 5.7 10.7 10.4 12.5 2 .8 4.5.4 5.4-.6l2.3-3.1-5.3-2.5-1.7 2.1c-3.1-1.1-5.9-3.8-7.2-7l2-1.8-2.4-5.2-1.4.9Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg> Confirmar asistencia</a>
+    <div class="note">HAZ CLICK AQUÍ</div>
   </div>
 </section>
 
@@ -282,7 +287,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 </main>
 
 <script>
-const target = new Date('2026-10-24T16:00:00-06:00').getTime();
+const target = new Date('2026-10-24T17:00:00-06:00').getTime();
 function tick(){
   const diff = Math.max(0,target-Date.now());
   const d = Math.floor(diff/86400000);
