@@ -109,7 +109,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   .count strong{font-size:1.42rem}
   .count span{font-size:.58rem}
   .countdown{margin-bottom:28px}
-  .film-reel{height:363px}.film-window{height:295px}.track{height:295px}
+  .film-reel{height:363px}.film-window{height:295px}.photo-track{height:295px}
   .frame{width:82vw}
   .details{
     min-height:640px;
@@ -170,6 +170,149 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
     margin-top:110px;
   }
 }
+
+/* FILM corregido: perforaciones arriba/abajo + fotos al centro */
+.film-section{
+  background:#080706;
+  padding:0 0 22px;
+  border-top:1px solid rgba(195,154,97,.2);
+  border-bottom:1px solid rgba(195,154,97,.2);
+}
+.film-reel{
+  position:relative;
+  height:383px;
+  overflow:hidden;
+  background:#080706;
+}
+.sprocket-row{
+  position:relative;
+  height:34px;
+  width:100%;
+  overflow:hidden;
+  background:#080706;
+  flex:0 0 34px;
+}
+.sprocket-strip{
+  position:absolute;
+  inset:0;
+  height:34px;
+  width:300%;
+  background-image:url("activos/ollos-cinta.jpg");
+  background-repeat:repeat-x;
+  background-size:auto 34px;
+  background-position:left center;
+  animation:sprocketSlide 70s linear infinite;
+}
+.sprocket-row.bottom .sprocket-strip{
+  transform:rotate(180deg);
+}
+.film-window{
+  position:relative;
+  height:315px;
+  overflow:hidden;
+  background:#080706;
+}
+.film-window:before,
+.film-window:after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:24px;
+  z-index:5;
+  pointer-events:none;
+}
+.film-window:before{
+  left:0;
+  background:linear-gradient(90deg,#080706,transparent);
+}
+.film-window:after{
+  right:0;
+  background:linear-gradient(270deg,#080706,transparent);
+}
+.photo-track{
+  height:315px;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  gap:8px;
+  width:max-content;
+  animation:photoSlide 70s linear infinite;
+  will-change:transform;
+}
+.frame{
+  width:min(78vw,285px);
+  flex:0 0 auto;
+  height:315px;
+  overflow:hidden;
+  position:relative;
+  border-left:1px solid rgba(195,154,97,.2);
+  border-right:1px solid rgba(195,154,97,.2);
+  background:#2e2419;
+}
+.frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:sepia(.25) contrast(1.08) saturate(.85) brightness(.9);
+}
+.frame:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(0deg,rgba(0,0,0,.72) 0%,transparent 38%),radial-gradient(circle at 50% 45%,transparent 34%,rgba(0,0,0,.38) 100%);
+}
+.photo-title{
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:16px;
+  z-index:2;
+  text-align:center;
+  font-family:'Special Elite',monospace;
+  font-size:.72rem;
+  line-height:1.35;
+  color:#f0d7a6;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  text-shadow:0 2px 8px #000;
+}
+@keyframes photoSlide{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+@keyframes sprocketSlide{
+  from{background-position:0 center}
+  to{background-position:-1400px center}
+}
+.film-caption{
+  text-align:center;
+  padding-top:12px;
+}
+.story-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  border:1px solid rgba(195,154,97,.35);
+  border-radius:999px;
+  padding:11px 28px;
+  color:var(--gold2);
+  font-family:'Special Elite',monospace;
+  text-transform:uppercase;
+  font-size:.78rem;
+  background:#12100d;
+}
+.film-note{
+  font-family:'Special Elite',monospace;
+  color:#b9925e;
+  font-size:.65rem;
+  letter-spacing:.08em;
+  margin-top:10px;
+}
+
+
 </style>
 </head>
 <body>
@@ -199,51 +342,10 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 <section class="section film-section noise">
   <div class="film-reel">
     <div class="sprocket-row">
-      <div class="sprocket-track">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-      </div>
+      <div class="sprocket-strip"></div>
     </div>
     <div class="film-window">
-      <div class="track">
+      <div class="photo-track">
         <div class="frame"><img src="fotos/portada.jpg" alt="Nuestra historia empieza con una sonrisa"><div class="photo-title">Nuestra historia empieza con una sonrisa</div></div>
         <div class="frame"><img src="fotos/01.jpg" alt="Dos caminos se encontraron"><div class="photo-title">Dos caminos se encontraron</div></div>
         <div class="frame"><img src="fotos/02.jpg" alt="Comenzaron las aventuras"><div class="photo-title">Comenzaron las aventuras</div></div>
@@ -273,48 +375,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
       </div>
     </div>
     <div class="sprocket-row bottom">
-      <div class="sprocket-track">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-        <img class="sprocket-img" src="activos/ollos-cinta.jpg" alt="">
-      </div>
+      <div class="sprocket-strip"></div>
     </div>
   </div>
   <div class="film-caption">
