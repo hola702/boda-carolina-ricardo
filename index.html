@@ -24,7 +24,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 .divider:before,.divider:after{content:"";width:90px;height:1px;background:rgba(30,21,13,.35)}
 .divider.light:before,.divider.light:after{background:rgba(195,154,97,.38)}
 
-audio{display:none}
+#ytHolder{position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden}
 .audioHint{position:fixed;right:12px;bottom:12px;z-index:50;background:rgba(8,7,6,.82);color:#d7bc8a;border:1px solid rgba(195,154,97,.45);border-radius:999px;padding:9px 13px;font-family:'Special Elite',monospace;font-size:.62rem;display:none}
 
 .hero{min-height:610px;padding:58px 20px 42px;text-align:center;color:var(--ink);border:1px solid rgba(195,154,97,.22);background:#d4b784}
@@ -108,15 +108,56 @@ audio{display:none}
   .count span{font-size:.58rem}
   .film-window{height:295px}
   .frame{width:82vw}
-  .details{min-height:820px}
-  .details .content{min-height:820px;padding:52px 20px 38px;gap:22px}
-  .detail-card{min-height:345px;padding:0 4px}
-  .detail-card:first-child .detail-graphic{width:120px;height:90px}
-  .detail-card.right .detail-graphic{width:260px;height:92px}
-  .detail-card h2{font-size:2.35rem;line-height:.9;margin:4px 0 14px}
-  .detail-card .place{font-size:.68rem;line-height:1.35;letter-spacing:.05em;margin-bottom:12px}
-  .detail-card .meta{font-size:.58rem;line-height:1.4;margin-bottom:14px}
-  .details .btn{font-size:.62rem;padding:9px 16px;letter-spacing:.04em}
+  .details{
+    min-height:640px;
+  }
+  .details .bg-img{
+    object-fit:cover;
+    object-position:center center;
+  }
+  .details .content{
+    min-height:640px;
+    padding:38px 18px 34px;
+    gap:26px;
+    justify-content:center;
+  }
+  .detail-card{
+    max-width:360px;
+    min-height:auto;
+    padding:0;
+  }
+  .detail-card:first-child .detail-graphic{
+    width:120px;
+    height:78px;
+    margin-bottom:8px;
+  }
+  .detail-card.right .detail-graphic{
+    width:245px;
+    max-width:84%;
+    height:82px;
+    margin-bottom:8px;
+  }
+  .detail-card h2{
+    font-size:2.25rem;
+    line-height:.88;
+    margin:2px 0 12px;
+  }
+  .detail-card .place{
+    font-size:.66rem;
+    line-height:1.35;
+    letter-spacing:.05em;
+    margin-bottom:10px;
+  }
+  .detail-card .meta{
+    font-size:.56rem;
+    line-height:1.4;
+    margin-bottom:12px;
+  }
+  .details .btn{
+    font-size:.6rem;
+    padding:9px 16px;
+    letter-spacing:.04em;
+  }
   .extras-grid{grid-template-columns:1fr 1fr}
   .extra:nth-child(2){border-right:0}
   .extra:nth-child(1),.extra:nth-child(2){border-bottom:1px solid rgba(195,154,97,.32)}
@@ -126,9 +167,7 @@ audio{display:none}
 </head>
 <body>
 <main class="page">
-<audio id="bgMusic" preload="auto" loop playsinline>
-  <source src="audio/harvest-moon.mp3" type="audio/mpeg">
-</audio>
+<div id="ytHolder"></div>
 <button class="audioHint" id="audioHint" type="button">♫ Toca para activar música</button>
 
 <section class="section hero noise">
@@ -253,39 +292,23 @@ function tick(){
 tick(); setInterval(tick,1000);
 
 (function(){
-  const audio = document.getElementById("bgMusic");
+  const videoId = "n2MtEsrcTTs";
+  const holder = document.getElementById("ytHolder");
   const hint = document.getElementById("audioHint");
-  let started = false;
-
-  if(audio){
-    audio.volume = 0.42;
+  function loadYT(){
+    if(holder.dataset.loaded) return;
+    holder.dataset.loaded = "1";
+    holder.innerHTML = `<iframe width="1" height="1" src="https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}&controls=0&mute=0&playsinline=1&enablejsapi=1" title="Harvest Moon" frameborder="0" allow="autoplay; encrypted-media"></iframe>`;
+    hint.style.display = "none";
   }
-
-  async function startMusic(){
-    if(started || !audio) return;
-    try{
-      await audio.play();
-      started = true;
-      hint.style.display = "none";
-    }catch(e){
-      hint.style.display = "block";
-    }
-  }
-
-  // Intento automático. En iPhone/WhatsApp/Safari puede bloquearse hasta que el invitado toque la pantalla.
   window.addEventListener("load", () => {
-    setTimeout(startMusic, 700);
-    setTimeout(() => {
-      if(!started) hint.style.display = "block";
-    }, 1800);
+    setTimeout(loadYT, 900);
+    setTimeout(() => { if(!holder.dataset.loaded) hint.style.display = "block"; }, 2000);
   });
-
-  // Respaldo: primera interacción del usuario.
   ["click","touchstart","scroll"].forEach(evt => {
-    document.addEventListener(evt, startMusic, {once:true, passive:true});
+    document.addEventListener(evt, loadYT, {once:true, passive:true});
   });
-
-  hint.addEventListener("click", startMusic);
+  hint.addEventListener("click", loadYT);
 })();
 </script>
 </body>
