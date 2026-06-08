@@ -321,10 +321,12 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 }
 .hero-flash{
   opacity:0;
-  animation:projectorFlash 3s infinite steps(1,end);
+  transition:opacity 120ms ease-in-out;
+  will-change:opacity;
 }
-@keyframes projectorFlash{
-  0%, 99.92%, 100%{opacity:0}
+.hero-flash.is-flashing{
+  opacity:1;
+}
   99.93%{opacity:1}
 }
 
@@ -547,6 +549,27 @@ audioHint.addEventListener("click", playMusic);
   }, { threshold: 0.22, rootMargin: "0px 0px -6% 0px" });
 
   animatedItems.forEach(el => observer.observe(el));
+})();
+</script>
+
+
+<script>
+(function(){
+  const flashLayer = document.querySelector(".hero-flash");
+  if(!flashLayer) return;
+
+  const INTERVAL_MS = 3000;
+  const FLASH_MS = 3;
+
+  function projectorPulse(){
+    flashLayer.classList.add("is-flashing");
+    window.setTimeout(() => {
+      flashLayer.classList.remove("is-flashing");
+    }, FLASH_MS);
+  }
+
+  window.setTimeout(projectorPulse, 600);
+  window.setInterval(projectorPulse, INTERVAL_MS);
 })();
 </script>
 
