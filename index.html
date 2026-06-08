@@ -315,6 +315,60 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 }
 
 
+
+.hero-base{
+  opacity:1;
+}
+.hero-flash{
+  opacity:0;
+  animation:projectorFlash 3s infinite steps(1,end);
+}
+@keyframes projectorFlash{
+  0%, 99.92%, 100%{opacity:0}
+  99.93%{opacity:1}
+}
+
+/* Animaciones al entrar en pantalla */
+.reveal{
+  opacity:0;
+  transform:translateY(18px) scale(.98);
+  filter:blur(2px);
+  transition:opacity .75s ease, transform .75s ease, filter .75s ease;
+  will-change:opacity, transform, filter;
+}
+.reveal.in-view{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  filter:blur(0);
+}
+.detail-graphic.reveal.in-view{
+  animation:softFloat 3.8s ease-in-out infinite .75s;
+}
+.extra img.reveal.in-view{
+  animation:iconBreath 3.4s ease-in-out infinite .65s;
+}
+@keyframes softFloat{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-5px) scale(1.015)}
+}
+@keyframes iconBreath{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-4px) scale(1.04)}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-flash,
+  .detail-graphic.reveal.in-view,
+  .extra img.reveal.in-view{
+    animation:none!important;
+  }
+  .reveal{
+    opacity:1;
+    transform:none;
+    filter:none;
+    transition:none;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -323,7 +377,8 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 <button class="audioHint" id="audioHint" type="button">♫ Activar música</button>
 
 <section class="section hero noise">
-  <img class="bg-img" src="activos/encabezado.jpg" alt="">
+  <img class="bg-img hero-base" src="activos/encabezado.JPG" alt="">
+  <img class="bg-img hero-flash" src="activos/encabezado2.JPG" alt="">
   <div class="content">
     <div class="kicker">Hay historias que escriben su propia película</div>
     <div class="divider">♡</div>
@@ -390,14 +445,14 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   <img class="bg-img" src="activos/medio-alto.jpg" alt="">
   <div class="content">
     <article class="detail-card">
-      <img class="detail-graphic" src="activos/iglesia.png" alt="">
+      <img class="detail-graphic reveal" src="activos/iglesia.png" alt="">
       <h2 class="script">Ceremonia Religiosa</h2>
       <div class="place">Capilla de Pinar de la Venta</div>
       <div class="meta">▣ 24 de octubre, 2026 | ◷ 5:00 p.m.</div>
       <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Capilla%20de%20Pinar%20de%20la%20Venta" target="_blank">⌖ Cómo llegar</a>
     </article>
     <article class="detail-card right">
-      <img class="detail-graphic" src="activos/recepcion.png" alt="">
+      <img class="detail-graphic reveal" src="activos/recepcion.png" alt="">
       <h2 class="script">Recepción</h2>
       <div class="place">Campestre Cd. Granja</div>
       <div class="meta">▣ 24 de octubre, 2026 | ◷ 5:30 p.m.</div>
@@ -408,10 +463,10 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 
 <section class="section extras noise">
   <div class="content extras-grid">
-    <div class="extra"><img src="iconos/dress.png" alt=""><h3>Dress Code</h3><p>Formal elegante<br>No niños</p></div>
-    <div class="extra"><img src="iconos/regalo.png" alt=""><h3>Mesa de regalos</h3><p>Tu presencia es nuestro mejor regalo</p><a href="https://www.amazon.com.mx/wedding" target="_blank">Ver más</a></div>
-    <div class="extra"><img src="iconos/cama.png" alt=""><h3>Hospedaje</h3><p>Opciones recomendadas para tu estancia</p><a href="https://www.google.com/maps/search/?api=1&query=hoteles%20cerca%20de%20Pinar%20de%20la%20Venta%20Zapopan" target="_blank">Ver más</a></div>
-    <div class="extra"><img src="iconos/camara.png" alt=""><h3>Comparte tus fotos</h3><p>Sube tus recuerdos al álbum</p><a href="https://photos.app.goo.gl/8xwqcfBT6UX9KDf78" target="_blank">Ver más</a></div>
+    <div class="extra"><img class="reveal" src="iconos/dress.png" alt=""><h3>Dress Code</h3><p>Formal elegante<br>No niños</p></div>
+    <div class="extra"><img class="reveal" src="iconos/regalo.png" alt=""><h3>Mesa de regalos</h3><p>Tu presencia es nuestro mejor regalo</p><a href="https://www.amazon.com.mx/wedding" target="_blank">Ver más</a></div>
+    <div class="extra"><img class="reveal" src="iconos/cama.png" alt=""><h3>Hospedaje</h3><p>Opciones recomendadas para tu estancia</p><a href="https://www.google.com/maps/search/?api=1&query=hoteles%20cerca%20de%20Pinar%20de%20la%20Venta%20Zapopan" target="_blank">Ver más</a></div>
+    <div class="extra"><img class="reveal" src="iconos/camara.png" alt=""><h3>Comparte tus fotos</h3><p>Sube tus recuerdos al álbum</p><a href="https://photos.app.goo.gl/8xwqcfBT6UX9KDf78" target="_blank">Ver más</a></div>
   </div>
 </section>
 
@@ -474,5 +529,26 @@ window.addEventListener("load", () => {
 
 audioHint.addEventListener("click", playMusic);
 </script>
+
+<script>
+(function(){
+  const animatedItems = document.querySelectorAll(".reveal");
+  if(!("IntersectionObserver" in window)){
+    animatedItems.forEach(el => el.classList.add("in-view"));
+    return;
+  }
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.22, rootMargin: "0px 0px -6% 0px" });
+
+  animatedItems.forEach(el => observer.observe(el));
+})();
+</script>
+
 </body>
 </html>
