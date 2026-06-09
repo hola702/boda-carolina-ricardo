@@ -337,8 +337,9 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 }
 .hero-flash{
   opacity:0;
-  transition:opacity 120ms ease-in-out;
+  transition:opacity .04s linear;
   will-change:opacity;
+  pointer-events:none;
 }
 .hero-flash.is-flashing{
   opacity:1;
@@ -592,46 +593,7 @@ audioHint.addEventListener("click", playMusic);
 
 
 
-<script>
-(function(){
-  const baseImg = document.querySelector(".hero-base");
-  const flashImg = document.querySelector(".hero-flash");
-  if(!baseImg || !flashImg) return;
 
-  const HOLD_MS = 2000;
-  const FLASH_MS = 6;
-
-  flashImg.style.opacity = "0";
-
-  function tripleFlash(){
-    function pulse(delay){
-      setTimeout(()=>{
-        flashImg.classList.add("is-flashing");
-        setTimeout(()=>{
-          flashImg.classList.remove("is-flashing");
-        }, FLASH_MS);
-      }, delay);
-    }
-    pulse(0);
-    pulse(6);
-    pulse(12);
-  }
-
-  function cycle(){
-    flashImg.style.opacity = "0";
-    setTimeout(()=>{
-      flashImg.style.opacity = "1";
-      tripleFlash();
-      setTimeout(()=>{
-        flashImg.style.opacity = "0";
-      }, HOLD_MS);
-    }, HOLD_MS);
-  }
-
-  cycle();
-  setInterval(cycle, HOLD_MS * 2);
-})();
-</script>
 
 
 
@@ -672,6 +634,51 @@ audioHint.addEventListener("click", playMusic);
     e.stopPropagation();
     startMusic();
   });
+})();
+</script>
+
+
+
+
+
+<script>
+(function(){
+
+  const flashLayer = document.querySelector('.hero-flash');
+  if(!flashLayer) return;
+
+  function blink3Times(){
+
+    flashLayer.classList.add('is-flashing');
+
+    setTimeout(()=>{
+      flashLayer.classList.remove('is-flashing');
+
+      setTimeout(()=>{
+        flashLayer.classList.add('is-flashing');
+
+        setTimeout(()=>{
+          flashLayer.classList.remove('is-flashing');
+
+          setTimeout(()=>{
+            flashLayer.classList.add('is-flashing');
+
+            setTimeout(()=>{
+              flashLayer.classList.remove('is-flashing');
+            },40);
+
+          },70);
+
+        },40);
+
+      },70);
+
+    },40);
+  }
+
+  setTimeout(blink3Times,800);
+  setInterval(blink3Times,2000);
+
 })();
 </script>
 
