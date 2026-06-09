@@ -514,6 +514,187 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   to{transform:translateX(0)}
 }
 
+
+/* DETAILS / MEDIO-ALTO RESPONSIVE FIX V47 */
+.details{
+  position:relative;
+  overflow:hidden;
+  background:#080706;
+  padding:0 0 22px;
+}
+.details-card{
+  position:relative;
+  max-width:1060px;
+  margin:0 auto;
+  min-height:860px;
+  background:#cdb084;
+  overflow:hidden;
+  box-shadow:0 0 0 1px rgba(195,154,97,.22),0 14px 38px rgba(0,0,0,.45);
+}
+.details-card:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("activos/medio-alto.jpg") center center/100% 100% no-repeat;
+  z-index:0;
+}
+.details-layout{
+  position:relative;
+  z-index:1;
+  min-height:860px;
+  display:grid;
+  grid-template-rows:1fr auto 1fr;
+  align-items:center;
+  justify-items:center;
+  padding:62px 34px 58px;
+}
+.detail-card{
+  width:min(86%,430px);
+  text-align:center;
+  color:#170f0a;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.detail-graphic{
+  width:118px;
+  height:118px;
+  object-fit:contain;
+  margin:0 auto 12px;
+  filter:sepia(.22) contrast(1.08);
+}
+.detail-card.reception .detail-graphic{
+  width:128px;
+  height:118px;
+}
+.detail-title{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(2.55rem,10vw,4.15rem);
+  line-height:.92;
+  margin:0 0 14px;
+  color:#100b08;
+  text-align:center;
+}
+.detail-card .place{
+  font-family:'Special Elite',monospace;
+  font-size:clamp(1.02rem,3.6vw,1.28rem);
+  line-height:1.35;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:#120c08;
+  text-align:center;
+  margin:0 0 12px;
+}
+.detail-card .meta{
+  font-family:'Special Elite',monospace;
+  font-size:clamp(1rem,3.2vw,1.22rem);
+  line-height:1.45;
+  font-weight:600;
+  color:#120c08;
+  text-align:center;
+  margin:0 0 18px;
+}
+.detail-card .btn{
+  margin-top:2px;
+}
+.center-camera{
+  width:86px;
+  height:auto;
+  object-fit:contain;
+  display:block;
+  margin:8px auto;
+  filter:drop-shadow(0 8px 14px rgba(0,0,0,.32)) sepia(.12);
+}
+
+/* Escritorio / pantalla ancha */
+@media (min-width:760px){
+  .details{
+    padding:28px 18px 34px;
+  }
+  .details-card{
+    max-width:1120px;
+    min-height:430px;
+    height:430px;
+    border-radius:16px;
+  }
+  .details-card:before{
+    inset:auto;
+    left:50%;
+    top:50%;
+    width:430px;
+    height:1120px;
+    transform:translate(-50%,-50%) rotate(90deg);
+    transform-origin:center center;
+    background:url("activos/medio-alto.jpg") center center/100% 100% no-repeat;
+  }
+  .details-layout{
+    min-height:430px;
+    height:430px;
+    grid-template-rows:1fr;
+    grid-template-columns:minmax(0,1fr) 90px minmax(0,1fr);
+    gap:18px;
+    padding:42px 72px;
+    align-items:center;
+  }
+  .detail-card{
+    width:100%;
+    max-width:350px;
+    justify-self:center;
+  }
+  .detail-title{
+    font-size:clamp(2.55rem,3.8vw,3.65rem);
+    margin-bottom:12px;
+  }
+  .detail-card .place{
+    font-size:clamp(1.02rem,1.18vw,1.2rem);
+    font-weight:700;
+  }
+  .detail-card .meta{
+    font-size:clamp(1.02rem,1.12vw,1.15rem);
+    margin-bottom:14px;
+  }
+  .detail-graphic{
+    width:104px;
+    height:104px;
+    margin-bottom:10px;
+  }
+  .detail-card.reception .detail-graphic{
+    width:134px;
+    height:104px;
+  }
+  .center-camera{
+    width:72px;
+    align-self:center;
+    justify-self:center;
+  }
+}
+
+/* Celular */
+@media (max-width:560px){
+  .details-card{
+    width:100%;
+    max-width:430px;
+    min-height:830px;
+  }
+  .details-layout{
+    min-height:830px;
+    padding:60px 22px 56px;
+  }
+  .detail-graphic{
+    width:96px;
+    height:96px;
+  }
+  .detail-card.reception .detail-graphic{
+    width:118px;
+    height:96px;
+  }
+  .center-camera{
+    width:78px;
+  }
+}
+
 </style>
 <link rel="preload" href="audio/harvest-moon.mp3?v=34" as="audio" type="audio/mpeg">
 </head>
