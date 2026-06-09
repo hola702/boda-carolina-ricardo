@@ -60,8 +60,138 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 .count strong{display:block;font-size:2rem;line-height:1}
 .count span{font-family:'Special Elite',monospace;font-size:.7rem;text-transform:uppercase}
 
+.film-section{background:#080706;padding:0 0 22px;border-top:1px solid rgba(195,154,97,.2);border-bottom:1px solid rgba(195,154,97,.2)}
+.film-hole{height:34px;background-repeat:repeat-x;background-size:auto 34px;background-position:left center}
+.film-hole.bottom{transform:none}
 
-/* FILM con perforaciones Kodak visibles */
+
+
+.film-window{height:315px;overflow:hidden;background:#080706;position:relative}
+.film-window:before,.film-window:after{content:"";position:absolute;top:0;bottom:0;width:24px;z-index:5;pointer-events:none}
+.film-window:before{left:0;background:linear-gradient(90deg,#080706,transparent)}
+.film-window:after{right:0;background:linear-gradient(270deg,#080706,transparent)}
+.track{height:100%;display:flex;gap:8px;width:max-content;animation:roll 70s linear infinite}
+.frame{width:min(78vw,285px);flex:0 0 auto;height:100%;overflow:hidden;position:relative;border-left:1px solid rgba(195,154,97,.2);border-right:1px solid rgba(195,154,97,.2);background:#2e2419}
+.frame img{width:100%;height:100%;object-fit:cover;filter:sepia(.25) contrast(1.08) saturate(.85) brightness(.9)}
+.frame:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.72) 0%,transparent 38%),radial-gradient(circle at 50% 45%,transparent 34%,rgba(0,0,0,.38) 100%)}
+.photo-title{position:absolute;left:14px;right:14px;bottom:16px;z-index:2;text-align:center;font-family:'Special Elite',monospace;font-size:.72rem;line-height:1.35;color:#f0d7a6;text-transform:uppercase;letter-spacing:.04em;text-shadow:0 2px 8px #000}
+@keyframes roll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.film-caption{text-align:center;padding-top:12px}
+.story-btn{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(195,154,97,.35);border-radius:999px;padding:11px 28px;color:var(--gold2);font-family:'Special Elite',monospace;text-transform:uppercase;font-size:.78rem;background:#12100d}
+.film-note{font-family:'Special Elite',monospace;color:#b9925e;font-size:.65rem;letter-spacing:.08em;margin-top:10px}
+
+.details{min-height:850px;color:var(--ink);background:#d4b784}
+.details .bg-img{object-fit:cover;object-position:center center}
+.details .content{display:grid;grid-template-columns:1fr;gap:28px;min-height:850px;padding:64px 34px 44px;align-items:start}
+.detail-card{text-align:center;padding:0 18px;min-height:350px}
+.detail-graphic{display:block;object-fit:contain;margin:0 auto 14px;filter:sepia(.2) contrast(1.08)}
+.detail-card:first-child .detail-graphic{width:135px;height:105px}
+.detail-card.right .detail-graphic{width:310px;max-width:82%;height:105px}
+.detail-card h2{font-size:3rem;line-height:.92;margin:6px 0 18px}
+.detail-card .place{font-family:'Special Elite',monospace;text-transform:uppercase;font-size:.82rem;letter-spacing:.07em;margin-bottom:16px}
+.detail-card .meta{font-family:'Special Elite',monospace;font-size:.72rem;margin-bottom:20px}
+.details .btn{padding:10px 24px}
+
+.extras{background:#090806;color:var(--gold);padding:27px 12px;border-top:1px solid rgba(195,154,97,.24);border-bottom:1px solid rgba(195,154,97,.24)}
+.extras:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(195,154,97,.09),transparent 45%);z-index:0}
+.extras-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;z-index:2}
+.extra{text-align:center;padding:8px 12px;border-right:1px solid rgba(195,154,97,.42);min-height:150px}
+.extra:last-child{border-right:0}
+.extra img{width:50px;height:50px;object-fit:contain;margin-bottom:8px}
+.extra h3{font-family:'Special Elite',monospace;text-transform:uppercase;letter-spacing:.06em;font-size:.7rem;margin:0 0 8px;color:var(--gold)}
+.extra p{margin:0 0 12px;color:#d5b888;font-size:.92rem;line-height:1.25}
+.extra a{display:inline-block;color:var(--gold);border:1px solid rgba(195,154,97,.5);border-radius:999px;padding:6px 12px;font-family:'Special Elite',monospace;font-size:.62rem;text-decoration:none;text-transform:uppercase}
+
+.rsvp{min-height:260px;color:var(--ink);text-align:center;background:#d4b784}
+.rsvp .content{padding:52px 20px 40px}
+.rsvp h2{font-size:2.1rem;line-height:1;margin:0 0 22px}
+.rsvp .note{font-family:'Special Elite',monospace;font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;margin-top:18px}
+
+.footer{min-height:230px;color:var(--gold);text-align:center;background:#090806}
+.footer .bg-img{object-fit:cover;object-position:center center}
+.footer .content{padding:38px 22px 24px}
+.footer p{font-family:'Special Elite',monospace;font-size:.82rem;line-height:1.45;margin:0 auto 16px;max-width:430px}
+.footer .party{font-size:1.08rem;color:#e0bd7d;margin-top:18px}
+.footer h2{font-family:'Special Elite',monospace;font-weight:400;font-size:1.25rem;letter-spacing:.12em;margin:14px 0 8px}
+.footer .date{font-family:'Special Elite',monospace;letter-spacing:.12em;font-size:.82rem}
+
+@media(max-width:560px){
+  .page{width:100%}
+  .hero{min-height:500px;padding:40px 15px 18px}
+  .hero .bg-img{object-fit:cover;object-position:center center}
+  .hero .content{max-width:92%}
+  .kicker{font-size:.72rem;max-width:320px;margin-left:auto;margin-right:auto;line-height:1.35}
+  .names{font-family:'Rouge Script',cursive;font-size:3.95rem;line-height:.86;margin-top:26px}
+  .pill{font-size:.68rem;padding:9px 22px;letter-spacing:.16em}
+  .hero-copy{font-size:.82rem;line-height:1.65;max-width:330px}
+  .count-title{font-size:.68rem;margin-top:16px}
+  .count{min-width:68px;padding:0 6px}
+  .count strong{font-size:1.42rem}
+  .count span{font-size:.58rem}
+  .countdown{margin-bottom:28px}
+  .film-reel{height:363px}.film-window{height:295px}.photo-track{height:295px}
+  .frame{width:82vw}
+  .details{
+    min-height:640px;
+  }
+  .details .bg-img{
+    object-fit:cover;
+    object-position:center center;
+  }
+  .details .content{
+    min-height:640px;
+    padding:38px 18px 34px;
+    gap:26px;
+    justify-content:center;
+  }
+  .detail-card{
+    max-width:360px;
+    min-height:auto;
+    padding:0;
+  }
+  .detail-card:first-child .detail-graphic{
+    width:120px;
+    height:78px;
+    margin-bottom:8px;
+  }
+  .detail-card.right .detail-graphic{
+    width:245px;
+    max-width:84%;
+    height:82px;
+    margin-bottom:8px;
+  }
+  .detail-card h2{
+    font-size:2.25rem;
+    line-height:.88;
+    margin:2px 0 12px;
+  }
+  .detail-card .place{
+    font-size:.66rem;
+    line-height:1.35;
+    letter-spacing:.05em;
+    margin-bottom:10px;
+  }
+  .detail-card .meta{
+    font-size:.56rem;
+    line-height:1.4;
+    margin-bottom:12px;
+  }
+  .details .btn{
+    font-size:.6rem;
+    padding:9px 16px;
+    letter-spacing:.04em;
+  }
+  .extras-grid{grid-template-columns:1fr 1fr}
+  .extra:nth-child(2){border-right:0}
+  .extra:nth-child(1),.extra:nth-child(2){border-bottom:1px solid rgba(195,154,97,.32)}
+  .rsvp h2{font-size:1.85rem}
+
+  .detail-card.right{
+    margin-top:110px;
+  }
+}
+
+/* FILM corregido: perforaciones arriba/abajo + fotos al centro */
 .film-section{
   background:#080706;
   padding:0 0 22px;
@@ -70,36 +200,36 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 }
 .film-reel{
   position:relative;
-  height:403px;
+  height:383px;
   overflow:hidden;
   background:#080706;
 }
 .sprocket-row{
   position:relative;
-  display:block;
-  height:44px;
-  min-height:44px;
+  height:34px;
   width:100%;
   overflow:hidden;
   background:#080706;
-  z-index:4;
+  flex:0 0 34px;
 }
 .sprocket-strip{
   position:absolute;
   inset:0;
-  height:44px;
-  min-height:44px;
+  height:34px;
   width:300%;
-  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=40");
+  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=41");
   background-repeat:repeat-x;
-  background-size:auto 44px;
+  background-size:auto 34px;
   background-position:left center;
   animation:sprocketSlide 70s linear infinite;
 }
+
 .sprocket-row.bottom .sprocket-strip{
-  background-image:url("activos/ollos-cinta-serie-inferior.jpg?v=40");
+  background-image:url("activos/ollos-cinta-serie-inferior.jpg?v=41");
   transform:none;
 }
+
+
 .film-window{
   position:relative;
   height:315px;
@@ -181,6 +311,8 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   from{background-position:0 center}
   to{background-position:1600px center}
 }
+  to{background-position:1600px center}
+}
 .film-caption{
   text-align:center;
   padding-top:12px;
@@ -205,14 +337,85 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   letter-spacing:.08em;
   margin-top:10px;
 }
-@media (max-width:560px){
-  .film-reel{height:383px}
-  .sprocket-row{height:44px;min-height:44px}
-  .sprocket-strip{height:44px;min-height:44px;background-size:auto 44px}
-  .film-window{height:295px}
-  .photo-track{height:295px}
-  .frame{height:295px}
+
+
+
+.hero-base{
+  opacity:1;
 }
+.hero-flash{
+  opacity:0;
+  transition:opacity .04s linear;
+  will-change:opacity;
+  pointer-events:none;
+}
+.hero-flash.is-flashing{
+  opacity:1;
+}
+  99.93%{opacity:1}
+}
+
+/* Animaciones al entrar en pantalla */
+.reveal{
+  opacity:0;
+  transform:translateY(18px) scale(.98);
+  filter:blur(2px);
+  transition:opacity .75s ease, transform .75s ease, filter .75s ease;
+  will-change:opacity, transform, filter;
+}
+.reveal.in-view{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  filter:blur(0);
+}
+.detail-graphic.reveal.in-view{
+  animation:softFloat 3.8s ease-in-out infinite .75s;
+}
+.extra img.reveal.in-view{
+  animation:iconBreath 3.4s ease-in-out infinite .65s;
+}
+@keyframes softFloat{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-5px) scale(1.015)}
+}
+@keyframes iconBreath{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-4px) scale(1.04)}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-flash,
+  .detail-graphic.reveal.in-view,
+  .extra img.reveal.in-view{
+    animation:none!important;
+  }
+  .reveal{
+    opacity:1;
+    transform:none;
+    filter:none;
+    transition:none;
+  }
+}
+
+
+.audioHint{
+  position:fixed;
+  right:12px;
+  bottom:12px;
+  z-index:80;
+  background:rgba(8,7,6,.86);
+  color:#d7bc8a;
+  border:1px solid rgba(195,154,97,.45);
+  border-radius:999px;
+  padding:9px 13px;
+  font-family:'Special Elite',monospace;
+  font-size:.62rem;
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+  cursor:pointer;
+}
+.audioHint.is-playing{
+  opacity:.78;
+}
+
 
 /* DETAILS / MEDIO-ALTO RESPONSIVE */
 .details{position:relative;overflow:hidden;background:#080706;padding:0}
