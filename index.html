@@ -699,11 +699,16 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 }
 
 </style>
-<link rel="preload" href="audio/harvest-moon.mp3?v=34" as="audio" type="audio/mpeg">
+
+<link rel="preload" href="activos/ollos-cinta.jpg?v=46" as="image">
+<link rel="preload" href="activos/ollos-cinta-kodak.jpg?v=46" as="image">
+<link rel="preload" href="activos/ollos-cinta-inferior.jpg?v=46" as="image">
+<link rel="preload" href="activos/ollos-cinta-kodak-inferior.jpg?v=46" as="image">
+
 </head>
 <body>
 <main class="page">
-<audio id="bgMusic" loop preload="auto" playsinline><source src="audio/harvest-moon.mp3?v=34" type="audio/mpeg"></audio>
+<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=34" type="audio/mpeg"></audio>
 
 <button class="audioHint" id="audioHint" type="button">♫ Activar música</button>
 
@@ -915,66 +920,3 @@ audioHint.addEventListener("click", playMusic);
       audioHint.textContent = "♫ Activar música";
     }
   }
-
-  window.addEventListener("load", () => {
-    setTimeout(startMusic, 350);
-  });
-
-  ["click","touchstart","scroll","keydown"].forEach(evt => {
-    document.addEventListener(evt, startMusic, {once:true, passive:true});
-  });
-
-  audioHint.addEventListener("click", (e) => {
-    e.stopPropagation();
-    startMusic();
-  });
-})();
-</script>
-
-
-
-
-
-<script>
-(function(){
-
-  const flashLayer = document.querySelector('.hero-flash');
-  if(!flashLayer) return;
-
-  function blink3Times(){
-
-    flashLayer.classList.add('is-flashing');
-
-    setTimeout(()=>{
-      flashLayer.classList.remove('is-flashing');
-
-      setTimeout(()=>{
-        flashLayer.classList.add('is-flashing');
-
-        setTimeout(()=>{
-          flashLayer.classList.remove('is-flashing');
-
-          setTimeout(()=>{
-            flashLayer.classList.add('is-flashing');
-
-            setTimeout(()=>{
-              flashLayer.classList.remove('is-flashing');
-            },40);
-
-          },70);
-
-        },40);
-
-      },70);
-
-    },40);
-  }
-
-  setTimeout(blink3Times,800);
-  setInterval(blink3Times,2000);
-
-})();
-</script>
-
-</body>
-</html>
