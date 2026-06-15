@@ -12,16 +12,16 @@
 <meta property="og:site_name" content="Boda Carolina & Ricardo">
 <meta property="og:title" content="Carolina & Ricardo | Invitación de boda">
 <meta property="og:description" content="24 Octubre 2026">
-<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=68">
+<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=69">
 
-<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=68">
-<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=68">
+<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=69">
+<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=69">
 <meta property="og:image:type" content="image/jpeg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Carolina & Ricardo | Invitación de boda">
 <meta name="twitter:description" content="24 Octubre 2026">
-<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=68">
+<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=69">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -218,7 +218,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   inset:0;
   height:34px;
   width:300%;
-  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=68");
+  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=69");
   background-repeat:repeat-x;
   background-size:auto 34px;
   background-position:left center;
@@ -870,19 +870,44 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   opacity:.9;
 }
 
+
+/* v69: llegada automática a Ricardo y entrada a la iglesia */
+.bride{
+  transition:left 1.15s ease;
+}
+.runner-stage.entering .bride{
+  opacity:0;
+  transform:translateY(-10px) scale(.36);
+  transition:left 1.15s ease, transform .72s ease .7s, opacity .45s ease 1.02s;
+}
+.runner-stage.entering .groom{
+  animation:groomEnterChurch .85s ease forwards .55s;
+}
+.runner-stage.entering .church{
+  animation:churchGlowEnter 1.25s ease-in-out infinite alternate;
+}
+@keyframes groomEnterChurch{
+  0%{opacity:1;transform:translateY(4px) scale(1)}
+  100%{opacity:0;transform:translateY(-10px) scale(.45)}
+}
+@keyframes churchGlowEnter{
+  from{filter:drop-shadow(0 0 10px rgba(255,222,144,.65))}
+  to{filter:drop-shadow(0 0 22px rgba(255,222,144,1))}
+}
+
 </style>
 
 
 </head>
 <body>
 <main class="page">
-<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=68" type="audio/mpeg"></audio>
+<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=69" type="audio/mpeg"></audio>
 
 <button class="audioHint" id="audioHint" type="button">♫ Activar música</button>
 
 <section class="section hero noise">
-  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=68" alt="">
-  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=68" alt="">
+  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=69" alt="">
+  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=69" alt="">
   <div class="content">
     <div class="kicker">Hay historias que escriben<br>su propia película</div>
     <div class="divider">♡</div>
@@ -1230,6 +1255,7 @@ audioHint.addEventListener("click", playMusic);
 
 
 
+
 <script>
 (function(){
   const stage=document.getElementById("runnerStage");
@@ -1245,14 +1271,14 @@ audioHint.addEventListener("click", playMusic);
 
   const duration=30000;
   const goalRevealTime=duration-1000;
-  const cleanFinalTime=duration-2500;
+  const cleanFinalTime=duration-500;
 
   const icons=["🎬","🎥","👠","💐","📸","💌","🎞️","🍾","🎩","💍"];
   const obstacleTimes=[
     2600, 6200, 9700,
     12800, 15700, 18400,
     20800, 22900, 24800,
-    26400, 27800
+    26400
   ];
 
   let running=false,finished=false,jumping=false,startTime=0,rafId=null,obstacles=[];
@@ -1288,7 +1314,6 @@ audioHint.addEventListener("click", playMusic);
     const w=stageWidth();
     const d=difficulty(elapsed);
 
-    // El camino sigue corriendo y acelerando, pero la meta no aparece hasta el último segundo.
     const roadX=-(elapsed*(0.16*d)%64);
     stage.style.setProperty("--road-x",roadX+"px");
 
@@ -1305,7 +1330,6 @@ audioHint.addEventListener("click", playMusic);
       });
     }
 
-    // Ricardo y la iglesia son sólo la meta: ocultos hasta el último segundo.
     if(elapsed<goalRevealTime){
       goal.style.opacity="0";
       goal.style.setProperty("--goal-x","0px");
@@ -1337,13 +1361,20 @@ audioHint.addEventListener("click", playMusic);
 
   function burst(){
     confetti.innerHTML="";
-    for(let i=0;i<64;i++){
+    for(let i=0;i<68;i++){
       const p=document.createElement("i");
       p.style.left=Math.random()*100+"%";
       p.style.animationDelay=Math.random()*.32+"s";
       confetti.appendChild(p);
     }
-    setTimeout(()=>confetti.innerHTML="",1900);
+    setTimeout(()=>confetti.innerHTML="",2100);
+  }
+
+  function moveBrideToChurch(){
+    const w=stageWidth();
+    // La iglesia queda aproximadamente a esta posición cuando goal-x es -260px.
+    bride.style.left=Math.max(130,w-225)+"px";
+    setTimeout(()=>stage.classList.add("entering"),850);
   }
 
   function win(){
@@ -1356,6 +1387,7 @@ audioHint.addEventListener("click", playMusic);
     goal.style.setProperty("--goal-x","-260px");
     status.textContent="¡Misión cumplida! Carolina llegó con Ricardo.";
     replayBtn.classList.add("show");
+    moveBrideToChurch();
     burst();
     if(rafId) cancelAnimationFrame(rafId);
   }
@@ -1404,15 +1436,22 @@ audioHint.addEventListener("click", playMusic);
     rafId=requestAnimationFrame(loop);
   }
 
+  function resetVisuals(){
+    stage.classList.remove("success","entering");
+    bride.style.left="";
+    bride.style.opacity="";
+    bride.style.transform="";
+    goal.style.opacity="0";
+    goal.style.setProperty("--goal-x","0px");
+  }
+
   function start(){
     if(rafId) cancelAnimationFrame(rafId);
     running=true;finished=false;jumping=false;
-    stage.classList.remove("success");
+    resetVisuals();
     overlay.classList.add("hide");
     replayBtn.classList.remove("show");
     bride.classList.add("walking");
-    goal.style.opacity="0";
-    goal.style.setProperty("--goal-x","0px");
     makeObstacles();
     startTime=performance.now();
     status.textContent="Camino al altar: 30 segundos. Toca para brincar.";
@@ -1428,6 +1467,7 @@ audioHint.addEventListener("click", playMusic);
   makeObstacles();
 })();
 </script>
+
 
 
 
