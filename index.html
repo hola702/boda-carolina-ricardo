@@ -11,16 +11,16 @@
 <meta property="og:site_name" content="Boda Carolina & Ricardo">
 <meta property="og:title" content="Carolina & Ricardo | Invitación de boda">
 <meta property="og:description" content="24 Octubre 2026">
-<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=57">
+<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=58">
 
-<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=57">
-<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=57">
+<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=58">
+<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=58">
 <meta property="og:image:type" content="image/jpeg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Carolina & Ricardo | Invitación de boda">
 <meta name="twitter:description" content="24 Octubre 2026">
-<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=57">
+<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=58">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -778,6 +778,26 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   to{transform:translateX(0)}
 }
 
+
+/* v58: carrete interactivo con dedo/mouse, sin bloquear carga */
+.film-reel{
+  touch-action:pan-y;
+  cursor:grab;
+}
+.film-reel.is-dragging{
+  cursor:grabbing;
+}
+.photo-track{
+  animation:none!important;
+  transform:translate3d(var(--photo-x,0px),0,0);
+  will-change:transform;
+}
+.sprocket-row::before{
+  animation:none!important;
+  transform:translate3d(var(--sprocket-x,0px),0,0);
+  will-change:transform;
+}
+
 </style>
 
 
@@ -876,7 +896,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 <section class="section extras noise">
   <div class="content extras-grid">
     <div class="extra"><img class="reveal" src="iconos/dress.png" alt=""><h3>Código de vestimenta</h3><p>Etiqueta rigurosa</p></div>
-    <div class="extra"><img class="reveal" src="iconos/regalo.png" alt=""><h3>Mesa de regalos</h3><p>Tu presencia es nuestro mejor regalo</p><a href="https://www.amazon.com.mx/wedding/guest-view/2S69L9AL68ZQD" target="_blank">Ver más</a></div>
+    <div class="extra"><img class="reveal" src="iconos/regalo.png" alt=""><h3>Mesa de regalos</h3><p>Tu presencia es nuestro mejor regalo</p><a href="https://www.amazon.com.mx/wedding/invite-partner?registryID=2S69L9AL68ZQD&roleID=677bb045-26b7-4f22-89ca-fe4639d423c7&code=-1341634954" target="_blank">Ver más</a></div>
     <div class="extra"><img class="reveal" src="iconos/cama.png" alt=""><h3>Hospedaje</h3><p>Opciones para tu estancia</p><a href="https://www.google.com/maps/search/?api=1&query=hoteles%20cerca%20de%20Pinar%20de%20la%20Venta%20Zapopan" target="_blank">Ver más</a></div>
     <div class="extra"><img class="reveal" src="iconos/camara.png" alt=""><h3>Comparte tus fotos</h3><p>Sube tus recuerdos al álbum</p><a href="https://photos.app.goo.gl/8xwqcfBT6UX9KDf78" target="_blank">Ver más</a></div>
   </div>
@@ -992,3 +1012,137 @@ audioHint.addEventListener("click", playMusic);
       audioHint.textContent = "♫ Activar música";
     }
   }
+
+<!-- v58 interactive script marker -->
+
+<script>
+(function(){
+  const reel = document.querySelector(".film-reel");
+  const photoTrack = document.querySelector(".photo-track");
+  const sprocketRows = document.querySelectorAll(".sprocket-row");
+  if(!reel || !photoTrack || !sprocketRows.length) return;
+
+  let photoX = 0;
+  let velocity = 0;
+  let autoSpeed = -22;
+  let lastFrame = performance.now();
+
+  let dragging = false;
+  let pointerId = null;
+  let lastPointerX = 0;
+  let lastPointerTime = 0;
+  let resumeAt = 0;
+
+  function getLoopWidth(){
+    const w = photoTrack.scrollWidth / 2;
+    return Math.max(1, w || 1);
+  }
+
+  function normalize(){
+    const loop = getLoopWidth();
+    while(photoX <= -loop) photoX += loop;
+    while(photoX > 0) photoX -= loop;
+  }
+
+  function apply(){
+    normalize();
+    photoTrack.style.setProperty("--photo-x", photoX.toFixed(2) + "px");
+
+    /* Los orificios se mueven en sentido opuesto a las fotografías */
+    const sprocketX = -photoX;
+    sprocketRows.forEach(row=>{
+      row.style.setProperty("--sprocket-x", sprocketX.toFixed(2) + "px");
+    });
+  }
+
+  function refreshAutoSpeed(){
+    autoSpeed = -(getLoopWidth() / 70);
+  }
+
+  function animate(now){
+    const dt = Math.min(0.05, (now - lastFrame) / 1000);
+    lastFrame = now;
+
+    if(!dragging){
+      if(now < resumeAt){
+        photoX += velocity * dt;
+        velocity *= Math.pow(0.88, dt * 60);
+      }else{
+        velocity += (autoSpeed - velocity) * Math.min(1, dt * 2.8);
+        photoX += velocity * dt;
+      }
+      apply();
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  function onPointerDown(e){
+    if(e.pointerType === "mouse" && e.button !== 0) return;
+    dragging = true;
+    pointerId = e.pointerId;
+    lastPointerX = e.clientX;
+    lastPointerTime = performance.now();
+    velocity = 0;
+    reel.classList.add("is-dragging");
+    reel.setPointerCapture?.(pointerId);
+  }
+
+  function onPointerMove(e){
+    if(!dragging || e.pointerId !== pointerId) return;
+
+    const now = performance.now();
+    const dx = e.clientX - lastPointerX;
+    const dt = Math.max(16, now - lastPointerTime) / 1000;
+
+    photoX += dx;
+    velocity = dx / dt;
+
+    lastPointerX = e.clientX;
+    lastPointerTime = now;
+
+    apply();
+    if(Math.abs(dx) > 1) e.preventDefault();
+  }
+
+  function endDrag(e){
+    if(!dragging || (pointerId !== null && e.pointerId !== pointerId)) return;
+    dragging = false;
+    reel.classList.remove("is-dragging");
+    resumeAt = performance.now() + 900;
+    try{ reel.releasePointerCapture?.(pointerId); }catch(err){}
+    pointerId = null;
+  }
+
+  reel.addEventListener("pointerdown", onPointerDown, {passive:true});
+  reel.addEventListener("pointermove", onPointerMove, {passive:false});
+  reel.addEventListener("pointerup", endDrag, {passive:true});
+  reel.addEventListener("pointercancel", endDrag, {passive:true});
+  reel.addEventListener("lostpointercapture", function(){
+    if(dragging){
+      dragging = false;
+      reel.classList.remove("is-dragging");
+      resumeAt = performance.now() + 900;
+    }
+  });
+
+  window.addEventListener("resize", function(){
+    refreshAutoSpeed();
+    apply();
+  });
+
+  window.addEventListener("load", function(){
+    refreshAutoSpeed();
+    apply();
+  });
+
+  setTimeout(function(){
+    refreshAutoSpeed();
+    apply();
+  }, 600);
+
+  refreshAutoSpeed();
+  apply();
+  requestAnimationFrame(animate);
+})();
+</script>
