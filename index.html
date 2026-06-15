@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -11,16 +12,16 @@
 <meta property="og:site_name" content="Boda Carolina & Ricardo">
 <meta property="og:title" content="Carolina & Ricardo | Invitación de boda">
 <meta property="og:description" content="24 Octubre 2026">
-<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=59">
+<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=61">
 
-<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=59">
-<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=59">
+<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=61">
+<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=61">
 <meta property="og:image:type" content="image/jpeg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Carolina & Ricardo | Invitación de boda">
 <meta name="twitter:description" content="24 Octubre 2026">
-<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=59">
+<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=61">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -217,7 +218,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   inset:0;
   height:34px;
   width:300%;
-  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=43");
+  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=61");
   background-repeat:repeat-x;
   background-size:auto 34px;
   background-position:left center;
@@ -779,7 +780,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 }
 
 
-/* v59: carrete interactivo + juego final */
+/* v61: carrete interactivo robusto con orificios infinitos reales */
 .film-reel{
   touch-action:pan-y;
   cursor:grab;
@@ -793,156 +794,75 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   transform:translate3d(var(--photo-x,0px),0,0);
   will-change:transform;
 }
+.sprocket-row{
+  position:relative!important;
+  height:34px!important;
+  width:100%!important;
+  overflow:hidden!important;
+  background:#080706!important;
+}
+.sprocket-strip,
 .sprocket-row::before{
-  animation:none!important;
+  display:none!important;
+}
+.sprocket-js-track{
+  position:absolute!important;
+  top:0!important;
+  left:0!important;
+  height:34px!important;
+  display:flex!important;
+  align-items:stretch!important;
+  width:max-content!important;
   transform:translate3d(var(--sprocket-x,0px),0,0);
   will-change:transform;
 }
+.sprocket-js-track img{
+  height:34px!important;
+  width:auto!important;
+  flex:0 0 auto!important;
+  display:block!important;
+  object-fit:cover!important;
+}
 
 /* Juego: Encuentra el boleto dorado */
-.ticket-game{
-  background:#080706;
-  color:var(--gold2);
-  text-align:center;
-  padding:42px 18px 38px;
-  border-top:1px solid rgba(195,154,97,.24);
-  border-bottom:1px solid rgba(195,154,97,.24);
-}
-.ticket-game .game-inner{
-  width:min(680px,100%);
-  margin:0 auto;
-}
-.ticket-game h2{
-  font-family:'Great Vibes',cursive;
-  font-size:clamp(2.2rem,8vw,3.8rem);
-  line-height:1;
-  margin:0 0 10px;
-  color:#e1bd7b;
-}
-.ticket-game p{
-  font-family:'Special Elite',monospace;
-  font-size:.76rem;
-  line-height:1.55;
-  letter-spacing:.04em;
-  color:#caa873;
-  margin:0 auto 22px;
-  max-width:430px;
-  text-transform:uppercase;
-}
-.ticket-row{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
-  margin:0 auto 18px;
-  max-width:580px;
-}
-.ticket-card{
-  position:relative;
-  min-height:96px;
-  border:1px solid rgba(195,154,97,.48);
-  background:
-    radial-gradient(circle at 0 50%, #080706 0 8px, transparent 9px),
-    radial-gradient(circle at 100% 50%, #080706 0 8px, transparent 9px),
-    linear-gradient(135deg,#1a120c,#3a2716 55%,#1a120c);
-  color:#ddb879;
-  border-radius:10px;
-  font-family:'Special Elite',monospace;
-  letter-spacing:.07em;
-  text-transform:uppercase;
-  font-size:.66rem;
-  padding:10px 6px;
-  box-shadow:0 14px 26px rgba(0,0,0,.25);
-  cursor:pointer;
-  transition:transform .22s ease, border-color .22s ease, background .22s ease;
-}
-.ticket-card:before,
-.ticket-card:after{
-  content:"";
-  position:absolute;
-  left:12px;
-  right:12px;
-  height:1px;
-  background:repeating-linear-gradient(90deg,rgba(217,183,122,.55) 0 5px,transparent 5px 10px);
-}
-.ticket-card:before{top:12px}
-.ticket-card:after{bottom:12px}
-.ticket-card:hover{
-  transform:translateY(-3px);
-  border-color:rgba(217,183,122,.8);
-}
-.ticket-card.revealed{
-  pointer-events:none;
-  transform:translateY(-2px) scale(1.02);
-}
-.ticket-card.winner{
-  background:linear-gradient(135deg,#7b4a12,#f2c66f 45%,#8b5817);
-  color:#160d07;
-  border-color:#f2c66f;
-}
-.ticket-card .ticket-front{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100%;
-  min-height:76px;
-}
-.ticket-card .ticket-result{
-  display:none;
-  align-items:center;
-  justify-content:center;
-  height:100%;
-  min-height:76px;
-  font-size:.78rem;
-}
-.ticket-card.revealed .ticket-front{display:none}
-.ticket-card.revealed .ticket-result{display:flex}
-.game-message{
-  min-height:42px;
-  font-family:'Special Elite',monospace;
-  color:#e8c98a;
-  font-size:.8rem;
-  line-height:1.45;
-  letter-spacing:.04em;
-  margin-top:8px;
-}
-.game-reset{
-  display:none;
-  margin-top:10px;
-  border:1px solid rgba(195,154,97,.45);
-  background:#15100c;
-  color:var(--gold2);
-  border-radius:999px;
-  padding:9px 18px;
-  font-family:'Special Elite',monospace;
-  font-size:.68rem;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  cursor:pointer;
-}
-.game-reset.show{
-  display:inline-flex;
-}
-@media(max-width:560px){
-  .ticket-game{padding:36px 14px 34px}
-  .ticket-row{grid-template-columns:repeat(5,1fr);gap:6px}
-  .ticket-card{min-height:82px;font-size:.52rem;border-radius:8px;padding:8px 3px}
-  .ticket-card .ticket-front,
-  .ticket-card .ticket-result{min-height:66px}
-}
+.ticket-game{background:#080706;color:var(--gold2);text-align:center;padding:42px 18px 38px;border-top:1px solid rgba(195,154,97,.24);border-bottom:1px solid rgba(195,154,97,.24)}
+.ticket-game .game-inner{width:min(680px,100%);margin:0 auto}
+.ticket-game h2{font-family:'Great Vibes',cursive;font-size:clamp(2.2rem,8vw,3.8rem);line-height:1;margin:0 0 10px;color:#e1bd7b}
+.ticket-game p{font-family:'Special Elite',monospace;font-size:.76rem;line-height:1.55;letter-spacing:.04em;color:#caa873;margin:0 auto 22px;max-width:430px;text-transform:uppercase}
+.ticket-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:0 auto 18px;max-width:580px}
+.ticket-card{position:relative;min-height:96px;border:1px solid rgba(195,154,97,.48);background:radial-gradient(circle at 0 50%, #080706 0 8px, transparent 9px),radial-gradient(circle at 100% 50%, #080706 0 8px, transparent 9px),linear-gradient(135deg,#1a120c,#3a2716 55%,#1a120c);color:#ddb879;border-radius:10px;font-family:'Special Elite',monospace;letter-spacing:.07em;text-transform:uppercase;font-size:.66rem;padding:10px 6px;box-shadow:0 14px 26px rgba(0,0,0,.25);cursor:pointer;transition:transform .22s ease, border-color .22s ease, background .22s ease}
+.ticket-card:before,.ticket-card:after{content:"";position:absolute;left:12px;right:12px;height:1px;background:repeating-linear-gradient(90deg,rgba(217,183,122,.55) 0 5px,transparent 5px 10px)}
+.ticket-card:before{top:12px}.ticket-card:after{bottom:12px}
+.ticket-card:hover{transform:translateY(-3px);border-color:rgba(217,183,122,.8)}
+.ticket-card.revealed{pointer-events:none;transform:translateY(-2px) scale(1.02)}
+.ticket-card.winner{background:linear-gradient(135deg,#7b4a12,#f2c66f 45%,#8b5817);color:#160d07;border-color:#f2c66f}
+.ticket-card .ticket-front{display:flex;align-items:center;justify-content:center;height:100%;min-height:76px}
+.ticket-card .ticket-result{display:none;align-items:center;justify-content:center;height:100%;min-height:76px;font-size:.78rem}
+.ticket-card.revealed .ticket-front{display:none}.ticket-card.revealed .ticket-result{display:flex}
+.game-message{min-height:42px;font-family:'Special Elite',monospace;color:#e8c98a;font-size:.8rem;line-height:1.45;letter-spacing:.04em;margin-top:8px}
+.game-reset{display:none;margin-top:10px;border:1px solid rgba(195,154,97,.45);background:#15100c;color:var(--gold2);border-radius:999px;padding:9px 18px;font-family:'Special Elite',monospace;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.game-reset.show{display:inline-flex}
+@media(max-width:560px){.ticket-game{padding:36px 14px 34px}.ticket-row{grid-template-columns:repeat(5,1fr);gap:6px}.ticket-card{min-height:82px;font-size:.52rem;border-radius:8px;padding:8px 3px}.ticket-card .ticket-front,.ticket-card .ticket-result{min-height:66px}}
 
 </style>
 
 
+
+<link rel="preload" href="activos/ollos-cinta.jpg?v=61" as="image">
+<link rel="preload" href="activos/ollos-cinta-kodak.jpg?v=61" as="image">
+<link rel="preload" href="activos/ollos-cinta-inferior.jpg?v=61" as="image">
+<link rel="preload" href="activos/ollos-cinta-kodak-inferior.jpg?v=61" as="image">
+
 </head>
 <body>
 <main class="page">
-<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=34" type="audio/mpeg"></audio>
+<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=61" type="audio/mpeg"></audio>
 
 <button class="audioHint" id="audioHint" type="button">♫ Activar música</button>
 
 <section class="section hero noise">
-  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=29" alt="">
-  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=29" alt="">
+  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=61" alt="">
+  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=61" alt="">
   <div class="content">
     <div class="kicker">Hay historias que escriben<br>su propia película</div>
     <div class="divider">♡</div>
@@ -962,7 +882,9 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 
 <section class="section film-section noise">
   <div class="film-reel">
-    <div class="sprocket-row sprocket-top"></div>
+    <div class="sprocket-row sprocket-top">
+      <div class="sprocket-track sprocket-js-track"><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""><img src="activos/ollos-cinta.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak.jpg?v=61" alt=""></div>
+    </div>
     <div class="film-window">
       <div class="photo-track">
         <div class="frame"><img src="fotos/portada.jpg" alt="Nuestra historia empieza con una sonrisa"><div class="photo-title">Nuestra historia empieza con una sonrisa</div></div>
@@ -993,7 +915,9 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
         <div class="frame"><img src="fotos/12.jpg" alt="Gracias por ser parte"><div class="photo-title">Gracias por ser parte</div></div>
       </div>
     </div>
-    <div class="sprocket-row bottom sprocket-bottom"></div>
+    <div class="sprocket-row bottom sprocket-bottom">
+      <div class="sprocket-track sprocket-js-track"><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-inferior.jpg?v=61" alt=""><img src="activos/ollos-cinta-kodak-inferior.jpg?v=61" alt=""></div>
+    </div>
   </div>
   <div class="film-caption">
     <div class="story-btn">Nuestra historia ▷</div>
@@ -1135,50 +1059,50 @@ audioHint.addEventListener("click", playMusic);
 (function(){
   const reel = document.querySelector(".film-reel");
   const photoTrack = document.querySelector(".photo-track");
-  const sprocketRows = document.querySelectorAll(".sprocket-row");
-  if(!reel || !photoTrack || !sprocketRows.length) return;
+  const sprocketTracks = document.querySelectorAll(".sprocket-js-track");
+  if(!reel || !photoTrack || !sprocketTracks.length) return;
 
   let photoX = 0;
   let velocity = 0;
   let autoSpeed = -22;
   let lastFrame = performance.now();
-
   let dragging = false;
   let pointerId = null;
   let lastPointerX = 0;
   let lastPointerTime = 0;
   let resumeAt = 0;
 
-  function getLoopWidth(){
-    const w = photoTrack.scrollWidth / 2;
-    return Math.max(1, w || 1);
+  function getPhotoLoop(){
+    return Math.max(1, photoTrack.scrollWidth / 2 || 1);
   }
-
-  function normalize(){
-    const loop = getLoopWidth();
+  function getSprocketLoop(track){
+    return Math.max(1, track.scrollWidth / 2 || 1);
+  }
+  function normalizePhoto(){
+    const loop = getPhotoLoop();
     while(photoX <= -loop) photoX += loop;
     while(photoX > 0) photoX -= loop;
   }
-
+  function wrapLeftToRight(value, loop){
+    return ((value % loop) + loop) % loop - loop;
+  }
   function apply(){
-    normalize();
+    normalizePhoto();
     photoTrack.style.setProperty("--photo-x", photoX.toFixed(2) + "px");
 
-    // Los orificios se desplazan en sentido opuesto a las fotografías.
-    const sprocketX = -photoX;
-    sprocketRows.forEach(row=>{
-      row.style.setProperty("--sprocket-x", sprocketX.toFixed(2) + "px");
+    const opposite = -photoX;
+    sprocketTracks.forEach(track=>{
+      const loop = getSprocketLoop(track);
+      const x = wrapLeftToRight(opposite, loop);
+      track.style.setProperty("--sprocket-x", x.toFixed(2) + "px");
     });
   }
-
   function refreshAutoSpeed(){
-    autoSpeed = -(getLoopWidth() / 70);
+    autoSpeed = -(getPhotoLoop() / 70);
   }
-
   function animate(now){
     const dt = Math.min(0.05, (now - lastFrame) / 1000);
     lastFrame = now;
-
     if(!dragging){
       if(now < resumeAt){
         photoX += velocity * dt;
@@ -1189,10 +1113,8 @@ audioHint.addEventListener("click", playMusic);
       }
       apply();
     }
-
     requestAnimationFrame(animate);
   }
-
   function onPointerDown(e){
     if(e.pointerType === "mouse" && e.button !== 0) return;
     dragging = true;
@@ -1203,24 +1125,18 @@ audioHint.addEventListener("click", playMusic);
     reel.classList.add("is-dragging");
     if(reel.setPointerCapture) reel.setPointerCapture(pointerId);
   }
-
   function onPointerMove(e){
     if(!dragging || e.pointerId !== pointerId) return;
-
     const now = performance.now();
     const dx = e.clientX - lastPointerX;
     const dt = Math.max(16, now - lastPointerTime) / 1000;
-
     photoX += dx;
     velocity = dx / dt;
-
     lastPointerX = e.clientX;
     lastPointerTime = now;
-
     apply();
     if(Math.abs(dx) > 1) e.preventDefault();
   }
-
   function endDrag(e){
     if(!dragging || (pointerId !== null && e.pointerId !== pointerId)) return;
     dragging = false;
@@ -1229,34 +1145,13 @@ audioHint.addEventListener("click", playMusic);
     try{ if(reel.releasePointerCapture) reel.releasePointerCapture(pointerId); }catch(err){}
     pointerId = null;
   }
-
   reel.addEventListener("pointerdown", onPointerDown, {passive:true});
   reel.addEventListener("pointermove", onPointerMove, {passive:false});
   reel.addEventListener("pointerup", endDrag, {passive:true});
   reel.addEventListener("pointercancel", endDrag, {passive:true});
-  reel.addEventListener("lostpointercapture", function(){
-    if(dragging){
-      dragging = false;
-      reel.classList.remove("is-dragging");
-      resumeAt = performance.now() + 900;
-    }
-  });
-
-  window.addEventListener("resize", function(){
-    refreshAutoSpeed();
-    apply();
-  });
-
-  window.addEventListener("load", function(){
-    refreshAutoSpeed();
-    apply();
-  });
-
-  setTimeout(function(){
-    refreshAutoSpeed();
-    apply();
-  }, 600);
-
+  window.addEventListener("resize", function(){refreshAutoSpeed();apply();});
+  window.addEventListener("load", function(){refreshAutoSpeed();apply();});
+  setTimeout(function(){refreshAutoSpeed();apply();}, 600);
   refreshAutoSpeed();
   apply();
   requestAnimationFrame(animate);
@@ -1269,27 +1164,25 @@ audioHint.addEventListener("click", playMusic);
   const message = document.getElementById("gameMessage");
   const reset = document.getElementById("gameReset");
   if(!row || !message || !reset) return;
-
   const cards = Array.from(row.querySelectorAll(".ticket-card"));
   let winner = Math.floor(Math.random() * cards.length);
   let finished = false;
-
+  let toma = 2;
   function resetGame(){
     winner = Math.floor(Math.random() * cards.length);
     finished = false;
+    toma = 2;
     message.textContent = "Cinco boletos. Una función especial.";
     reset.classList.remove("show");
-    cards.forEach((card, i)=>{
+    cards.forEach(card=>{
       card.classList.remove("revealed","winner");
       card.querySelector(".ticket-result").textContent = "";
       card.disabled = false;
     });
   }
-
   cards.forEach((card, i)=>{
     card.addEventListener("click", function(){
       if(finished) return;
-
       card.classList.add("revealed");
       if(i === winner){
         card.classList.add("winner");
@@ -1299,15 +1192,16 @@ audioHint.addEventListener("click", playMusic);
         reset.classList.add("show");
         cards.forEach(c=>c.disabled = true);
       }else{
-        card.querySelector(".ticket-result").textContent = "Toma 2";
-        message.textContent = "Toma dos 🎬 intenta otra vez.";
+        card.querySelector(".ticket-result").textContent = "Toma " + toma;
+        message.textContent = "Toma " + toma + " 🎬 intenta otra vez.";
+        toma += 1;
         card.disabled = true;
       }
     });
   });
-
   reset.addEventListener("click", resetGame);
 })();
 </script>
+
 </body>
 </html>
