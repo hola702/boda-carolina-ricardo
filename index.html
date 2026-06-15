@@ -12,16 +12,16 @@
 <meta property="og:site_name" content="Boda Carolina & Ricardo">
 <meta property="og:title" content="Carolina & Ricardo | Invitación de boda">
 <meta property="og:description" content="24 Octubre 2026">
-<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=66">
+<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=67">
 
-<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=66">
-<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=66">
+<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=67">
+<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=67">
 <meta property="og:image:type" content="image/jpeg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Carolina & Ricardo | Invitación de boda">
 <meta name="twitter:description" content="24 Octubre 2026">
-<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=66">
+<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=67">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -218,7 +218,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   inset:0;
   height:34px;
   width:300%;
-  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=66");
+  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=67");
   background-repeat:repeat-x;
   background-size:auto 34px;
   background-position:left center;
@@ -864,19 +864,25 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 @keyframes goalPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.16)}}
 @media(max-width:560px){.runner-game{padding:36px 12px 34px}.runner-stage{height:215px;border-radius:14px}.bride{left:28px;bottom:52px;font-size:1.9rem}.runner-goal{bottom:52px;width:78px}.church{font-size:1.9rem}.groom{font-size:1.45rem}.runner-obstacle{bottom:53px;font-size:1.65rem}}
 
+
+/* v67: dificultad progresiva del juego */
+.runner-stage.playing-fast .runner-bg:before{
+  opacity:.9;
+}
+
 </style>
 
 
 </head>
 <body>
 <main class="page">
-<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=66" type="audio/mpeg"></audio>
+<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=67" type="audio/mpeg"></audio>
 
 <button class="audioHint" id="audioHint" type="button">♫ Activar música</button>
 
 <section class="section hero noise">
-  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=66" alt="">
-  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=66" alt="">
+  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=67" alt="">
+  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=67" alt="">
   <div class="content">
     <div class="kicker">Hay historias que escriben<br>su propia película</div>
     <div class="divider">♡</div>
@@ -986,7 +992,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   <div class="runner-inner">
     <div class="runner-kicker">Misión final</div>
     <h2>Camino a la iglesia</h2>
-    <p>Ayuda a Carolina a brincar los obstáculos. La calle avanza como película hasta llegar con Ricardo.</p>
+    <p>Ayuda a Carolina a brincar los obstáculos. Cada tramo será más rápido hasta llegar con Ricardo.</p>
 
     <div class="runner-stage" id="runnerStage" aria-label="Juego camino a la iglesia">
       <div class="runner-bg" aria-hidden="true">
@@ -1222,6 +1228,7 @@ audioHint.addEventListener("click", playMusic);
 
 
 
+
 <script>
 (function(){
   const stage=document.getElementById("runnerStage");
@@ -1236,12 +1243,24 @@ audioHint.addEventListener("click", playMusic);
   if(!stage||!bride||!obstacleLayer||!goal||!overlay||!startBtn||!replayBtn||!status||!confetti)return;
 
   const duration=30000;
-  const icons=["🎬","🎥","👠","💐","📸","💌","🎞️","🍾"];
-  const obstacleTimes=[2600,6100,9500,13200,17100,21400,25500];
+  const icons=["🎬","🎥","👠","💐","📸","💌","🎞️","🍾","🎩","💍"];
+  const obstacleTimes=[
+    2600, 6200, 9700,
+    12800, 15700, 18400,
+    20800, 22900, 24800,
+    26400, 27800, 29100
+  ];
+
   let running=false,finished=false,jumping=false,startTime=0,rafId=null,obstacles=[];
 
   function stageWidth(){return Math.max(1,stage.clientWidth||1)}
   function brideX(){return bride.getBoundingClientRect().left-stage.getBoundingClientRect().left}
+
+  function difficulty(elapsed){
+    const p=Math.min(1,elapsed/duration);
+    return 1 + p*0.95;
+  }
+
   function makeObstacles(){
     obstacleLayer.innerHTML="";
     const w=stageWidth();
@@ -1250,23 +1269,28 @@ audioHint.addEventListener("click", playMusic);
       el.className="runner-obstacle";
       el.textContent=icons[i%icons.length];
       obstacleLayer.appendChild(el);
-      return {el,time,passed:false,x:w+180+i*42};
+      return {el,time,passed:false,x:w+180+i*36};
     });
   }
+
   function setWorld(elapsed){
     const w=stageWidth();
-    const speed=(w+260)/5200;
-    const roadX=-(elapsed*.18%64);
+    const d=difficulty(elapsed);
+
+    // El camino se acelera conforme avanza la misión.
+    const roadX=-(elapsed*(0.16*d)%64);
     stage.style.setProperty("--road-x",roadX+"px");
 
     obstacles.forEach(o=>{
-      o.x=w+120-(elapsed-o.time)*speed;
+      const localElapsed=elapsed-o.time;
+      const speed=((w+260)/5200)*(1+Math.min(1,Math.max(0,elapsed/duration))*0.85);
+      o.x=w+120-localElapsed*speed;
       o.el.style.setProperty("--x",o.x+"px");
       if(o.x<-80) o.el.style.opacity="0";
       else o.el.style.opacity="1";
     });
 
-    // La iglesia y Ricardo son la meta: no aparecen durante los obstáculos.
+    // La iglesia y Ricardo aparecen como meta final.
     const goalStart=duration-3800;
     let goalX=0;
     if(elapsed<goalStart){
@@ -1274,10 +1298,12 @@ audioHint.addEventListener("click", playMusic);
       goal.style.opacity="0";
     }else{
       goal.style.opacity="1";
-      goalX=-((elapsed-goalStart)*speed);
+      const goalSpeed=((w+260)/5200)*1.75;
+      goalX=-((elapsed-goalStart)*goalSpeed);
     }
     goal.style.setProperty("--goal-x",goalX+"px");
   }
+
   function jump(){
     if(!running||jumping||finished)return;
     jumping=true;
@@ -1286,16 +1312,19 @@ audioHint.addEventListener("click", playMusic);
     bride.classList.add("is-jumping");
     setTimeout(()=>{bride.classList.remove("is-jumping");jumping=false},620);
   }
+
   function box(el,pad){
     const r=el.getBoundingClientRect();
     return {left:r.left+pad,right:r.right-pad,top:r.top+pad,bottom:r.bottom-pad};
   }
+
   function hit(a,b){
     return !(a.right<b.left||a.left>b.right||a.bottom<b.top||a.top>b.bottom);
   }
+
   function burst(){
     confetti.innerHTML="";
-    for(let i=0;i<56;i++){
+    for(let i=0;i<64;i++){
       const p=document.createElement("i");
       p.style.left=Math.random()*100+"%";
       p.style.animationDelay=Math.random()*.32+"s";
@@ -1303,6 +1332,7 @@ audioHint.addEventListener("click", playMusic);
     }
     setTimeout(()=>confetti.innerHTML="",1900);
   }
+
   function win(){
     running=false;
     finished=true;
@@ -1315,6 +1345,7 @@ audioHint.addEventListener("click", playMusic);
     burst();
     if(rafId) cancelAnimationFrame(rafId);
   }
+
   function fail(){
     running=false;
     finished=false;
@@ -1325,6 +1356,7 @@ audioHint.addEventListener("click", playMusic);
     replayBtn.classList.remove("show");
     if(rafId) cancelAnimationFrame(rafId);
   }
+
   function loop(now){
     if(!running)return;
     const elapsed=now-startTime;
@@ -1344,7 +1376,10 @@ audioHint.addEventListener("click", playMusic);
     });
 
     const secondsLeft=Math.max(0,Math.ceil((duration-elapsed)/1000));
-    if(running) status.textContent="Camino al altar: "+secondsLeft+" segundos. Toca para brincar.";
+    if(running){
+      const level=elapsed<10000?"Tramo 1":elapsed<20000?"Tramo 2":"Tramo final";
+      status.textContent=level+": "+secondsLeft+" segundos. Toca para brincar.";
+    }
 
     if(elapsed>=duration&&running){
       win();
@@ -1352,6 +1387,7 @@ audioHint.addEventListener("click", playMusic);
     }
     rafId=requestAnimationFrame(loop);
   }
+
   function start(){
     if(rafId) cancelAnimationFrame(rafId);
     running=true;finished=false;jumping=false;
@@ -1366,6 +1402,7 @@ audioHint.addEventListener("click", playMusic);
     status.textContent="Camino al altar: 30 segundos. Toca para brincar.";
     rafId=requestAnimationFrame(loop);
   }
+
   startBtn.addEventListener("click",start);
   replayBtn.addEventListener("click",start);
   stage.addEventListener("pointerdown",jump,{passive:true});
@@ -1375,6 +1412,7 @@ audioHint.addEventListener("click", playMusic);
   makeObstacles();
 })();
 </script>
+
 
 
 
