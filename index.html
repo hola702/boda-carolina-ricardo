@@ -12,16 +12,16 @@
 <meta property="og:site_name" content="Boda Carolina & Ricardo">
 <meta property="og:title" content="Carolina & Ricardo | Invitación de boda">
 <meta property="og:description" content="24 Octubre 2026">
-<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=62">
+<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=63">
 
-<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=62">
-<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=62">
+<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=63">
+<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=63">
 <meta property="og:image:type" content="image/jpeg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Carolina & Ricardo | Invitación de boda">
 <meta name="twitter:description" content="24 Octubre 2026">
-<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=62">
+<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=63">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -218,7 +218,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   inset:0;
   height:34px;
   width:300%;
-  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=62");
+  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=63");
   background-repeat:repeat-x;
   background-size:auto 34px;
   background-position:left center;
@@ -816,25 +816,36 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   display:none!important;
 }
 
-/* Juego: Encuentra el boleto dorado */
-.ticket-game{background:#080706;color:var(--gold2);text-align:center;padding:42px 18px 38px;border-top:1px solid rgba(195,154,97,.24);border-bottom:1px solid rgba(195,154,97,.24)}
-.ticket-game .game-inner{width:min(680px,100%);margin:0 auto}
-.ticket-game h2{font-family:'Great Vibes',cursive;font-size:clamp(2.2rem,8vw,3.8rem);line-height:1;margin:0 0 10px;color:#e1bd7b}
-.ticket-game p{font-family:'Special Elite',monospace;font-size:.76rem;line-height:1.55;letter-spacing:.04em;color:#caa873;margin:0 auto 22px;max-width:430px;text-transform:uppercase}
-.ticket-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:0 auto 18px;max-width:580px}
-.ticket-card{position:relative;min-height:96px;border:1px solid rgba(195,154,97,.48);background:radial-gradient(circle at 0 50%, #080706 0 8px, transparent 9px),radial-gradient(circle at 100% 50%, #080706 0 8px, transparent 9px),linear-gradient(135deg,#1a120c,#3a2716 55%,#1a120c);color:#ddb879;border-radius:10px;font-family:'Special Elite',monospace;letter-spacing:.07em;text-transform:uppercase;font-size:.66rem;padding:10px 6px;box-shadow:0 14px 26px rgba(0,0,0,.25);cursor:pointer;transition:transform .22s ease, border-color .22s ease, background .22s ease}
-.ticket-card:before,.ticket-card:after{content:"";position:absolute;left:12px;right:12px;height:1px;background:repeating-linear-gradient(90deg,rgba(217,183,122,.55) 0 5px,transparent 5px 10px)}
-.ticket-card:before{top:12px}.ticket-card:after{bottom:12px}
-.ticket-card:hover{transform:translateY(-3px);border-color:rgba(217,183,122,.8)}
-.ticket-card.revealed{pointer-events:none;transform:translateY(-2px) scale(1.02)}
-.ticket-card.winner{background:linear-gradient(135deg,#7b4a12,#f2c66f 45%,#8b5817);color:#160d07;border-color:#f2c66f}
-.ticket-card .ticket-front{display:flex;align-items:center;justify-content:center;height:100%;min-height:76px}
-.ticket-card .ticket-result{display:none;align-items:center;justify-content:center;height:100%;min-height:76px;font-size:.78rem}
-.ticket-card.revealed .ticket-front{display:none}.ticket-card.revealed .ticket-result{display:flex}
-.game-message{min-height:42px;font-family:'Special Elite',monospace;color:#e8c98a;font-size:.8rem;line-height:1.45;letter-spacing:.04em;margin-top:8px}
-.game-reset{display:none;margin-top:10px;border:1px solid rgba(195,154,97,.45);background:#15100c;color:var(--gold2);border-radius:999px;padding:9px 18px;font-family:'Special Elite',monospace;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
-.game-reset.show{display:inline-flex}
-@media(max-width:560px){.ticket-game{padding:36px 14px 34px}.ticket-row{grid-template-columns:repeat(5,1fr);gap:6px}.ticket-card{min-height:82px;font-size:.52rem;border-radius:8px;padding:8px 3px}.ticket-card .ticket-front,.ticket-card .ticket-result{min-height:66px}}
+
+
+/* v63: juego sencillo - Carolina camino a la iglesia */
+.runner-game{background:#080706;color:var(--gold2);text-align:center;padding:42px 16px 40px;border-top:1px solid rgba(195,154,97,.24);border-bottom:1px solid rgba(195,154,97,.24)}
+.runner-inner{width:min(690px,100%);margin:0 auto}
+.runner-kicker{font-family:'Special Elite',monospace;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;color:#b9925e;margin-bottom:8px}
+.runner-game h2{font-family:'Great Vibes',cursive;font-size:clamp(2.35rem,8vw,4rem);line-height:1;color:#e1bd7b;margin:0 0 10px}
+.runner-game p{font-family:'Special Elite',monospace;text-transform:uppercase;letter-spacing:.04em;font-size:.72rem;line-height:1.55;color:#caa873;max-width:460px;margin:0 auto 18px}
+.runner-stage{position:relative;height:230px;overflow:hidden;border:1px solid rgba(195,154,97,.42);border-radius:18px;background:linear-gradient(180deg,rgba(217,183,122,.14),transparent 48%),linear-gradient(180deg,#17110c 0%,#0b0907 62%,#15100c 62%,#15100c 100%);box-shadow:0 16px 36px rgba(0,0,0,.36);touch-action:manipulation;user-select:none}
+.runner-goal{position:absolute;right:18px;bottom:54px;width:88px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:1px;z-index:2}
+.church{font-size:2.15rem;line-height:1;filter:drop-shadow(0 5px 10px rgba(0,0,0,.45))}
+.groom{font-size:1.6rem;line-height:1;transform:translateY(4px)}
+.bride{position:absolute;left:38px;bottom:54px;width:44px;height:52px;font-size:2.05rem;line-height:52px;z-index:4;filter:drop-shadow(0 7px 8px rgba(0,0,0,.45))}
+.bride.is-jumping{animation:brideJump .58s ease-out}
+@keyframes brideJump{0%{transform:translateY(0)}45%{transform:translateY(-78px)}100%{transform:translateY(0)}}
+.obstacle{position:absolute;right:-60px;bottom:55px;width:42px;height:42px;font-size:1.8rem;line-height:42px;z-index:3;transform:translateX(var(--obs-x,0px));filter:drop-shadow(0 6px 8px rgba(0,0,0,.45))}
+.road-line{position:absolute;left:0;right:0;bottom:42px;height:3px;background:repeating-linear-gradient(90deg,rgba(217,183,122,.55) 0 28px,transparent 28px 52px);opacity:.72}
+.runner-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(8,7,6,.72);z-index:8;backdrop-filter:blur(2px)}
+.runner-overlay.hide{display:none}
+.overlay-title{font-family:'Special Elite',monospace;text-transform:uppercase;color:#e8c98a;letter-spacing:.06em;font-size:.8rem}
+.runner-btn{border:1px solid rgba(195,154,97,.55);background:#15100c;color:var(--gold2);border-radius:999px;padding:10px 20px;font-family:'Special Elite',monospace;text-transform:uppercase;letter-spacing:.06em;font-size:.68rem;cursor:pointer;box-shadow:0 10px 22px rgba(0,0,0,.28)}
+.runner-btn.small{display:none;padding:8px 15px;font-size:.62rem}.runner-btn.small.show{display:inline-flex}
+.runner-info{min-height:48px;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font-family:'Special Elite',monospace;color:#d9b77a;font-size:.72rem;line-height:1.4;text-transform:uppercase;letter-spacing:.04em}
+.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:9}
+.confetti i{position:absolute;top:-12px;width:7px;height:12px;background:#d9b77a;animation:confettiFall 1.25s ease-in forwards}
+.confetti i:nth-child(3n){background:#c39a61}.confetti i:nth-child(4n){background:#f3d391}.confetti i:nth-child(5n){border-radius:50%}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(260px) rotate(320deg);opacity:0}}
+.runner-stage.success .church,.runner-stage.success .groom{animation:goalPulse .8s ease-in-out 2}
+@keyframes goalPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.16)}}
+@media(max-width:560px){.runner-game{padding:36px 12px 34px}.runner-stage{height:215px;border-radius:14px}.bride{left:28px;bottom:52px;font-size:1.9rem}.runner-goal{right:8px;bottom:52px;width:78px}.church{font-size:1.9rem}.groom{font-size:1.45rem}}
 
 </style>
 
@@ -842,13 +853,13 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 </head>
 <body>
 <main class="page">
-<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=62" type="audio/mpeg"></audio>
+<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=63" type="audio/mpeg"></audio>
 
 <button class="audioHint" id="audioHint" type="button">♫ Activar música</button>
 
 <section class="section hero noise">
-  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=62" alt="">
-  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=62" alt="">
+  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=63" alt="">
+  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=63" alt="">
   <div class="content">
     <div class="kicker">Hay historias que escriben<br>su propia película</div>
     <div class="divider">♡</div>
@@ -914,7 +925,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
         <img class="detail-graphic reveal" src="activos/iglesia.png" alt="">
         <h2 class="detail-title">Ceremonia Religiosa</h2>
         <p class="place"><strong>Capilla de Pinar de la Venta</strong></p>
-        <p class="meta">▣ 24 de octubre, 2026 | ◷ 5:00 p.m.</p>
+        <p class="meta">▣ 24 de octubre, 2026 | ◷ 4:45 p.m.</p>
         <a class="btn" href="https://maps.app.goo.gl/7LAb23rXtHKiynsF6" target="_blank">⌖ Cómo llegar</a>
       </article>
 
@@ -934,7 +945,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 <section class="section extras noise">
   <div class="content extras-grid">
     <div class="extra"><img class="reveal" src="iconos/dress.png" alt=""><h3>Código de vestimenta</h3><p>Etiqueta rigurosa</p></div>
-    <div class="extra"><img class="reveal" src="iconos/regalo.png" alt=""><h3>Mesa de regalos</h3><p>Tu presencia es nuestro mejor regalo</p><a href="https://www.amazon.com.mx/wedding/invite-partner?registryID=2S69L9AL68ZQD&roleID=677bb045-26b7-4f22-89ca-fe4639d423c7&code=-1341634954" target="_blank">Ver más</a></div>
+    <div class="extra"><img class="reveal" src="iconos/regalo.png" alt=""><h3>Mesa de regalos</h3><p>Tu presencia es nuestro mejor regalo</p><a href="https://www.amazon.com.mx/wedding/guest-view/2S69L9AL68ZQD" target="_blank">Ver más</a></div>
     <div class="extra"><img class="reveal" src="iconos/cama.png" alt=""><h3>Hospedaje</h3><p>Opciones para tu estancia</p><a href="https://www.google.com/maps/search/?api=1&query=hoteles%20cerca%20de%20Pinar%20de%20la%20Venta%20Zapopan" target="_blank">Ver más</a></div>
     <div class="extra"><img class="reveal" src="iconos/camara.png" alt=""><h3>Comparte tus fotos</h3><p>Sube tus recuerdos al álbum</p><a href="https://photos.app.goo.gl/8xwqcfBT6UX9KDf78" target="_blank">Ver más</a></div>
   </div>
@@ -950,19 +961,27 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 </section>
 
 
-<section class="section ticket-game noise" id="juego-boleto">
-  <div class="game-inner">
-    <h2>Encuentra el boleto dorado</h2>
-    <p>Elige un boleto de la función. Si encuentras el dorado, ya tienes pase directo a la fiesta.</p>
-    <div class="ticket-row" id="ticketRow">
-      <button class="ticket-card" type="button"><span class="ticket-front">Boleto<br>01</span><span class="ticket-result"></span></button>
-      <button class="ticket-card" type="button"><span class="ticket-front">Boleto<br>02</span><span class="ticket-result"></span></button>
-      <button class="ticket-card" type="button"><span class="ticket-front">Boleto<br>03</span><span class="ticket-result"></span></button>
-      <button class="ticket-card" type="button"><span class="ticket-front">Boleto<br>04</span><span class="ticket-result"></span></button>
-      <button class="ticket-card" type="button"><span class="ticket-front">Boleto<br>05</span><span class="ticket-result"></span></button>
+
+<section class="section runner-game noise" id="mision-final">
+  <div class="runner-inner">
+    <div class="runner-kicker">Misión final</div>
+    <h2>Camino a la iglesia</h2>
+    <p>Ayuda a Carolina a brincar los obstáculos para llegar con Ricardo.</p>
+    <div class="runner-stage" id="runnerStage" aria-label="Juego camino a la iglesia">
+      <div class="runner-goal" aria-hidden="true"><div class="church">⛪</div><div class="groom">🤵</div></div>
+      <div class="bride" id="bride" aria-hidden="true">👰‍♀️</div>
+      <div class="obstacle" id="obstacle" aria-hidden="true">🎬</div>
+      <div class="road-line"></div>
+      <div class="runner-overlay" id="runnerOverlay">
+        <div class="overlay-title">¿Lista para la toma final?</div>
+        <button class="runner-btn" id="runnerStart" type="button">Iniciar misión</button>
+      </div>
+      <div class="confetti" id="confetti" aria-hidden="true"></div>
     </div>
-    <div class="game-message" id="gameMessage">Cinco boletos. Una función especial.</div>
-    <button class="game-reset" id="gameReset" type="button">Jugar otra vez</button>
+    <div class="runner-info">
+      <span id="runnerStatus">Toca la pantalla o presiona espacio para brincar.</span>
+      <button class="runner-btn small" id="runnerReplay" type="button">Jugar otra vez</button>
+    </div>
   </div>
 </section>
 
@@ -979,7 +998,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 </main>
 
 <script>
-const target = new Date('2026-10-24T17:00:00-06:00').getTime();
+const target = new Date('2026-10-24T16:45:00-06:00').getTime();
 function tick(){
   const diff = Math.max(0,target-Date.now());
   const d = Math.floor(diff/86400000);
@@ -1164,51 +1183,20 @@ audioHint.addEventListener("click", playMusic);
 
 <script>
 (function(){
-  const row = document.getElementById("ticketRow");
-  const message = document.getElementById("gameMessage");
-  const reset = document.getElementById("gameReset");
-  if(!row || !message || !reset) return;
-
-  const cards = Array.from(row.querySelectorAll(".ticket-card"));
-  let winner = Math.floor(Math.random() * cards.length);
-  let finished = false;
-  let toma = 2;
-
-  function resetGame(){
-    winner = Math.floor(Math.random() * cards.length);
-    finished = false;
-    toma = 2;
-    message.textContent = "Cinco boletos. Una función especial.";
-    reset.classList.remove("show");
-    cards.forEach(card=>{
-      card.classList.remove("revealed","winner");
-      card.querySelector(".ticket-result").textContent = "";
-      card.disabled = false;
-    });
-  }
-
-  cards.forEach((card, i)=>{
-    card.addEventListener("click", function(){
-      if(finished) return;
-
-      card.classList.add("revealed");
-      if(i === winner){
-        card.classList.add("winner");
-        card.querySelector(".ticket-result").textContent = "Dorado";
-        message.textContent = "¡Corte! Este invitado sí viene a la fiesta.";
-        finished = true;
-        reset.classList.add("show");
-        cards.forEach(c=>c.disabled = true);
-      }else{
-        card.querySelector(".ticket-result").textContent = "Toma " + toma;
-        message.textContent = "Toma " + toma + " 🎬 intenta otra vez.";
-        toma += 1;
-        card.disabled = true;
-      }
-    });
-  });
-
-  reset.addEventListener("click", resetGame);
+  const stage=document.getElementById("runnerStage"),bride=document.getElementById("bride"),obstacle=document.getElementById("obstacle"),overlay=document.getElementById("runnerOverlay"),startBtn=document.getElementById("runnerStart"),replayBtn=document.getElementById("runnerReplay"),status=document.getElementById("runnerStatus"),confetti=document.getElementById("confetti");
+  if(!stage||!bride||!obstacle||!overlay||!startBtn||!replayBtn||!status||!confetti)return;
+  const icons=["🎬","🎥","👠","💐","📸"];let running=false,jumping=false,finished=false,obsX=0,obsSpeed=3.05,passed=0,lastTime=performance.now();
+  function stageWidth(){return Math.max(1,stage.clientWidth||1)}
+  function resetObstacle(){obsX=stageWidth()+50;obstacle.textContent=icons[Math.floor(Math.random()*icons.length)];obstacle.style.setProperty("--obs-x",obsX+"px")}
+  function jump(){if(!running||jumping||finished)return;jumping=true;bride.classList.add("is-jumping");setTimeout(()=>{bride.classList.remove("is-jumping");jumping=false},590)}
+  function box(el,pad){const r=el.getBoundingClientRect();return{left:r.left+pad,right:r.right-pad,top:r.top+pad,bottom:r.bottom-pad}}
+  function hit(a,b){return !(a.right<b.left||a.left>b.right||a.bottom<b.top||a.top>b.bottom)}
+  function burst(){confetti.innerHTML="";for(let i=0;i<42;i++){const p=document.createElement("i");p.style.left=Math.random()*100+"%";p.style.animationDelay=Math.random()*.32+"s";confetti.appendChild(p)}setTimeout(()=>confetti.innerHTML="",1700)}
+  function win(){finished=true;running=false;stage.classList.add("success");obstacle.style.opacity="0";status.textContent="¡Misión cumplida! Carolina llegó con Ricardo.";replayBtn.classList.add("show");burst()}
+  function fail(){running=false;status.textContent="¡Toma dos! Toca para brincar y seguir camino al altar.";overlay.classList.remove("hide");startBtn.textContent="Intentar otra vez";replayBtn.classList.remove("show")}
+  function start(){running=true;finished=false;jumping=false;passed=0;obsSpeed=3.05;lastTime=performance.now();stage.classList.remove("success");overlay.classList.add("hide");replayBtn.classList.remove("show");obstacle.style.opacity="1";status.textContent="Toca la pantalla o presiona espacio para brincar.";resetObstacle();requestAnimationFrame(loop)}
+  function loop(now){if(!running)return;const dt=Math.min(32,now-lastTime)/16.67;lastTime=now;obsX-=obsSpeed*dt;obstacle.style.setProperty("--obs-x",obsX+"px");if(hit(box(bride,8),box(obstacle,7))&&!jumping){fail();return}if(obsX<-70){passed++;obsSpeed+=.22;if(passed>=5){win();return}resetObstacle()}requestAnimationFrame(loop)}
+  startBtn.addEventListener("click",start);replayBtn.addEventListener("click",start);stage.addEventListener("pointerdown",jump,{passive:true});document.addEventListener("keydown",e=>{if(e.code==="Space"&&running){e.preventDefault();jump()}});
 })();
 </script>
 
