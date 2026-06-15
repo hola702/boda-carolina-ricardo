@@ -12,16 +12,16 @@
 <meta property="og:site_name" content="Boda Carolina & Ricardo">
 <meta property="og:title" content="Carolina & Ricardo | Invitación de boda">
 <meta property="og:description" content="24 Octubre 2026">
-<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=67">
+<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=68">
 
-<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=67">
-<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=67">
+<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=68">
+<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=68">
 <meta property="og:image:type" content="image/jpeg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Carolina & Ricardo | Invitación de boda">
 <meta name="twitter:description" content="24 Octubre 2026">
-<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=67">
+<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=68">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -218,7 +218,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   inset:0;
   height:34px;
   width:300%;
-  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=67");
+  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=68");
   background-repeat:repeat-x;
   background-size:auto 34px;
   background-position:left center;
@@ -876,13 +876,13 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 </head>
 <body>
 <main class="page">
-<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=67" type="audio/mpeg"></audio>
+<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=68" type="audio/mpeg"></audio>
 
 <button class="audioHint" id="audioHint" type="button">♫ Activar música</button>
 
 <section class="section hero noise">
-  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=67" alt="">
-  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=67" alt="">
+  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=68" alt="">
+  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=68" alt="">
   <div class="content">
     <div class="kicker">Hay historias que escriben<br>su propia película</div>
     <div class="divider">♡</div>
@@ -1229,6 +1229,7 @@ audioHint.addEventListener("click", playMusic);
 
 
 
+
 <script>
 (function(){
   const stage=document.getElementById("runnerStage");
@@ -1243,12 +1244,15 @@ audioHint.addEventListener("click", playMusic);
   if(!stage||!bride||!obstacleLayer||!goal||!overlay||!startBtn||!replayBtn||!status||!confetti)return;
 
   const duration=30000;
+  const goalRevealTime=duration-1000;
+  const cleanFinalTime=duration-2500;
+
   const icons=["🎬","🎥","👠","💐","📸","💌","🎞️","🍾","🎩","💍"];
   const obstacleTimes=[
     2600, 6200, 9700,
     12800, 15700, 18400,
     20800, 22900, 24800,
-    26400, 27800, 29100
+    26400, 27800
   ];
 
   let running=false,finished=false,jumping=false,startTime=0,rafId=null,obstacles=[];
@@ -1273,35 +1277,44 @@ audioHint.addEventListener("click", playMusic);
     });
   }
 
+  function hideAllObstacles(){
+    obstacles.forEach(o=>{
+      o.el.style.opacity="0";
+      o.el.classList.add("passed");
+    });
+  }
+
   function setWorld(elapsed){
     const w=stageWidth();
     const d=difficulty(elapsed);
 
-    // El camino se acelera conforme avanza la misión.
+    // El camino sigue corriendo y acelerando, pero la meta no aparece hasta el último segundo.
     const roadX=-(elapsed*(0.16*d)%64);
     stage.style.setProperty("--road-x",roadX+"px");
 
-    obstacles.forEach(o=>{
-      const localElapsed=elapsed-o.time;
-      const speed=((w+260)/5200)*(1+Math.min(1,Math.max(0,elapsed/duration))*0.85);
-      o.x=w+120-localElapsed*speed;
-      o.el.style.setProperty("--x",o.x+"px");
-      if(o.x<-80) o.el.style.opacity="0";
-      else o.el.style.opacity="1";
-    });
+    if(elapsed>=cleanFinalTime){
+      hideAllObstacles();
+    }else{
+      obstacles.forEach(o=>{
+        const localElapsed=elapsed-o.time;
+        const speed=((w+260)/5200)*(1+Math.min(1,Math.max(0,elapsed/duration))*0.85);
+        o.x=w+120-localElapsed*speed;
+        o.el.style.setProperty("--x",o.x+"px");
+        if(o.x<-80) o.el.style.opacity="0";
+        else o.el.style.opacity="1";
+      });
+    }
 
-    // La iglesia y Ricardo aparecen como meta final.
-    const goalStart=duration-3800;
-    let goalX=0;
-    if(elapsed<goalStart){
-      goalX=0;
+    // Ricardo y la iglesia son sólo la meta: ocultos hasta el último segundo.
+    if(elapsed<goalRevealTime){
       goal.style.opacity="0";
+      goal.style.setProperty("--goal-x","0px");
     }else{
       goal.style.opacity="1";
-      const goalSpeed=((w+260)/5200)*1.75;
-      goalX=-((elapsed-goalStart)*goalSpeed);
+      const revealProgress=Math.min(1,(elapsed-goalRevealTime)/1000);
+      const goalX=-260*revealProgress;
+      goal.style.setProperty("--goal-x",goalX+"px");
     }
-    goal.style.setProperty("--goal-x",goalX+"px");
   }
 
   function jump(){
@@ -1337,6 +1350,7 @@ audioHint.addEventListener("click", playMusic);
     running=false;
     finished=true;
     bride.classList.remove("walking","is-jumping");
+    hideAllObstacles();
     stage.classList.add("success");
     goal.style.opacity="1";
     goal.style.setProperty("--goal-x","-260px");
@@ -1362,22 +1376,24 @@ audioHint.addEventListener("click", playMusic);
     const elapsed=now-startTime;
     setWorld(elapsed);
 
-    const b=box(bride,8);
-    obstacles.forEach(o=>{
-      if(o.passed||!running)return;
-      if(o.x < brideX()-55){
-        o.passed=true;
-        o.el.classList.add("passed");
-        return;
-      }
-      if(hit(b,box(o.el,7))&&!jumping){
-        fail();
-      }
-    });
+    if(elapsed<cleanFinalTime){
+      const b=box(bride,8);
+      obstacles.forEach(o=>{
+        if(o.passed||!running)return;
+        if(o.x < brideX()-55){
+          o.passed=true;
+          o.el.classList.add("passed");
+          return;
+        }
+        if(hit(b,box(o.el,7))&&!jumping){
+          fail();
+        }
+      });
+    }
 
     const secondsLeft=Math.max(0,Math.ceil((duration-elapsed)/1000));
     if(running){
-      const level=elapsed<10000?"Tramo 1":elapsed<20000?"Tramo 2":"Tramo final";
+      const level=elapsed<10000?"Tramo 1":elapsed<20000?"Tramo 2":elapsed<cleanFinalTime?"Tramo final":"Llegando a la meta";
       status.textContent=level+": "+secondsLeft+" segundos. Toca para brincar.";
     }
 
@@ -1412,6 +1428,7 @@ audioHint.addEventListener("click", playMusic);
   makeObstacles();
 })();
 </script>
+
 
 
 
