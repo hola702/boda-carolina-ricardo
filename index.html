@@ -12,16 +12,16 @@
 <meta property="og:site_name" content="Boda Carolina & Ricardo">
 <meta property="og:title" content="Carolina & Ricardo | Invitación de boda">
 <meta property="og:description" content="24 Octubre 2026">
-<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=63">
+<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=65">
 
-<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=63">
-<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=63">
+<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=65">
+<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=65">
 <meta property="og:image:type" content="image/jpeg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Carolina & Ricardo | Invitación de boda">
 <meta name="twitter:description" content="24 Octubre 2026">
-<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=63">
+<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=65">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -218,7 +218,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   inset:0;
   height:34px;
   width:300%;
-  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=63");
+  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=65");
   background-repeat:repeat-x;
   background-size:auto 34px;
   background-position:left center;
@@ -819,25 +819,30 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 
 
 
-/* v64: juego corregido - Carolina camina 30 segundos hacia la iglesia */
+
+/* v65: juego estilo Mario/Circus - la pantalla se desplaza */
 .runner-game{background:#080706;color:var(--gold2);text-align:center;padding:42px 16px 40px;border-top:1px solid rgba(195,154,97,.24);border-bottom:1px solid rgba(195,154,97,.24)}
 .runner-inner{width:min(690px,100%);margin:0 auto}
 .runner-kicker{font-family:'Special Elite',monospace;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;color:#b9925e;margin-bottom:8px}
 .runner-game h2{font-family:'Great Vibes',cursive;font-size:clamp(2.35rem,8vw,4rem);line-height:1;color:#e1bd7b;margin:0 0 10px}
 .runner-game p{font-family:'Special Elite',monospace;text-transform:uppercase;letter-spacing:.04em;font-size:.72rem;line-height:1.55;color:#caa873;max-width:500px;margin:0 auto 18px}
-.runner-stage{position:relative;height:230px;overflow:hidden;border:1px solid rgba(195,154,97,.42);border-radius:18px;background:linear-gradient(180deg,rgba(217,183,122,.14),transparent 48%),linear-gradient(180deg,#17110c 0%,#0b0907 62%,#15100c 62%,#15100c 100%);box-shadow:0 16px 36px rgba(0,0,0,.36);touch-action:manipulation;user-select:none}
-.runner-goal{position:absolute;right:18px;bottom:54px;width:88px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:1px;z-index:2}
+.runner-stage{position:relative;height:230px;overflow:hidden;border:1px solid rgba(195,154,97,.42);border-radius:18px;background:linear-gradient(180deg,rgba(217,183,122,.14),transparent 48%),linear-gradient(180deg,#17110c 0%,#0b0907 61%,#15100c 61%,#15100c 100%);box-shadow:0 16px 36px rgba(0,0,0,.36);touch-action:manipulation;user-select:none}
+.runner-bg{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.runner-bg:before{content:"";position:absolute;left:0;right:0;bottom:42px;height:3px;background:repeating-linear-gradient(90deg,rgba(217,183,122,.58) 0 34px,transparent 34px 64px);transform:translateX(var(--road-x,0px));will-change:transform}
+.runner-bg:after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:repeating-linear-gradient(90deg,rgba(195,154,97,.08) 0 10px,transparent 10px 46px);transform:translateX(var(--road-x,0px));will-change:transform}
+.street-mark{position:absolute;bottom:76px;width:64px;height:1px;background:rgba(217,183,122,.2);transform:translateX(var(--road-x,0px));will-change:transform}
+.mark-a{left:12%}.mark-b{left:48%;bottom:98px}.mark-c{left:78%;bottom:65px}
+.runner-goal{position:absolute;right:-120px;bottom:54px;width:88px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:1px;z-index:2;transform:translateX(var(--goal-x,0px));will-change:transform}
 .church{font-size:2.15rem;line-height:1;filter:drop-shadow(0 5px 10px rgba(0,0,0,.45))}
 .groom{font-size:1.6rem;line-height:1;transform:translateY(4px)}
-.bride{position:absolute;left:28px;bottom:54px;width:44px;height:52px;font-size:2.05rem;line-height:52px;z-index:5;filter:drop-shadow(0 7px 8px rgba(0,0,0,.45));will-change:left,transform}
+.bride{position:absolute;left:34px;bottom:54px;width:44px;height:52px;font-size:2.05rem;line-height:52px;z-index:5;filter:drop-shadow(0 7px 8px rgba(0,0,0,.45));will-change:transform}
 .bride.walking{animation:brideStep .34s ease-in-out infinite}
 .bride.is-jumping{animation:brideJump .62s ease-out}
 @keyframes brideStep{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
-@keyframes brideJump{0%{transform:translateY(0)}45%{transform:translateY(-82px)}100%{transform:translateY(0)}}
+@keyframes brideJump{0%{transform:translateY(0)}45%{transform:translateY(-86px)}100%{transform:translateY(0)}}
 .runner-obstacles{position:absolute;inset:0;z-index:4;pointer-events:none}
-.runner-obstacle{position:absolute;bottom:55px;width:42px;height:42px;font-size:1.8rem;line-height:42px;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45))}
-.runner-obstacle.passed{opacity:.2;transform:scale(.86)}
-.road-line{position:absolute;left:0;right:0;bottom:42px;height:3px;background:repeating-linear-gradient(90deg,rgba(217,183,122,.55) 0 28px,transparent 28px 52px);opacity:.72}
+.runner-obstacle{position:absolute;bottom:55px;width:42px;height:42px;font-size:1.8rem;line-height:42px;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45));transform:translateX(var(--x,0px));will-change:transform}
+.runner-obstacle.passed{opacity:.22;transform:translateX(var(--x,0px)) scale(.86)}
 .runner-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(8,7,6,.72);z-index:8;backdrop-filter:blur(2px)}
 .runner-overlay.hide{display:none}
 .overlay-title{font-family:'Special Elite',monospace;text-transform:uppercase;color:#e8c98a;letter-spacing:.06em;font-size:.8rem}
@@ -850,7 +855,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 @keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(260px) rotate(320deg);opacity:0}}
 .runner-stage.success .church,.runner-stage.success .groom{animation:goalPulse .8s ease-in-out 2}
 @keyframes goalPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.16)}}
-@media(max-width:560px){.runner-game{padding:36px 12px 34px}.runner-stage{height:215px;border-radius:14px}.bride{left:24px;bottom:52px;font-size:1.9rem}.runner-goal{right:8px;bottom:52px;width:78px}.church{font-size:1.9rem}.groom{font-size:1.45rem}.runner-obstacle{bottom:53px;font-size:1.65rem}}
+@media(max-width:560px){.runner-game{padding:36px 12px 34px}.runner-stage{height:215px;border-radius:14px}.bride{left:28px;bottom:52px;font-size:1.9rem}.runner-goal{bottom:52px;width:78px}.church{font-size:1.9rem}.groom{font-size:1.45rem}.runner-obstacle{bottom:53px;font-size:1.65rem}}
 
 </style>
 
@@ -858,13 +863,13 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 </head>
 <body>
 <main class="page">
-<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=63" type="audio/mpeg"></audio>
+<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=65" type="audio/mpeg"></audio>
 
 <button class="audioHint" id="audioHint" type="button">♫ Activar música</button>
 
 <section class="section hero noise">
-  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=63" alt="">
-  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=63" alt="">
+  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=65" alt="">
+  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=65" alt="">
   <div class="content">
     <div class="kicker">Hay historias que escriben<br>su propia película</div>
     <div class="divider">♡</div>
@@ -968,19 +973,25 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 
 
 
+
 <section class="section runner-game noise" id="mision-final">
   <div class="runner-inner">
     <div class="runner-kicker">Misión final</div>
     <h2>Camino a la iglesia</h2>
-    <p>Ayuda a Carolina a brincar los obstáculos durante 30 segundos para llegar con Ricardo.</p>
+    <p>Ayuda a Carolina a brincar los obstáculos. La calle avanza como película hasta llegar con Ricardo.</p>
 
     <div class="runner-stage" id="runnerStage" aria-label="Juego camino a la iglesia">
-      <div class="runner-goal" aria-hidden="true">
+      <div class="runner-bg" aria-hidden="true">
+        <span class="street-mark mark-a"></span>
+        <span class="street-mark mark-b"></span>
+        <span class="street-mark mark-c"></span>
+      </div>
+
+      <div class="runner-goal" id="runnerGoal" aria-hidden="true">
         <div class="church">⛪</div>
         <div class="groom">🤵</div>
       </div>
 
-      <div class="road-line"></div>
       <div class="runner-obstacles" id="runnerObstacles" aria-hidden="true"></div>
       <div class="bride" id="bride" aria-hidden="true">👰‍♀️</div>
 
@@ -998,6 +1009,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
     </div>
   </div>
 </section>
+
 
 
 <footer class="section footer noise">
@@ -1197,46 +1209,55 @@ audioHint.addEventListener("click", playMusic);
 </script>
 
 
+
 <script>
 (function(){
   const stage=document.getElementById("runnerStage");
   const bride=document.getElementById("bride");
   const obstacleLayer=document.getElementById("runnerObstacles");
+  const goal=document.getElementById("runnerGoal");
   const overlay=document.getElementById("runnerOverlay");
   const startBtn=document.getElementById("runnerStart");
   const replayBtn=document.getElementById("runnerReplay");
   const status=document.getElementById("runnerStatus");
   const confetti=document.getElementById("confetti");
-  if(!stage||!bride||!obstacleLayer||!overlay||!startBtn||!replayBtn||!status||!confetti)return;
+  if(!stage||!bride||!obstacleLayer||!goal||!overlay||!startBtn||!replayBtn||!status||!confetti)return;
 
   const duration=30000;
   const icons=["🎬","🎥","👠","💐","📸","💌","🎞️","🍾"];
-  const obstaclePercents=[.16,.28,.40,.52,.64,.76,.88];
+  const obstacleTimes=[2600,6100,9500,13200,17100,21400,25500];
   let running=false,finished=false,jumping=false,startTime=0,rafId=null,obstacles=[];
 
   function stageWidth(){return Math.max(1,stage.clientWidth||1)}
-  function startX(){return Math.max(22,stageWidth()*.06)}
-  function goalX(){return Math.max(startX()+120,stageWidth()-110)}
-  function pathWidth(){return goalX()-startX()}
-
+  function brideX(){return bride.getBoundingClientRect().left-stage.getBoundingClientRect().left}
   function makeObstacles(){
     obstacleLayer.innerHTML="";
-    obstacles=obstaclePercents.map((pct,i)=>{
+    const w=stageWidth();
+    obstacles=obstacleTimes.map((time,i)=>{
       const el=document.createElement("div");
       el.className="runner-obstacle";
       el.textContent=icons[i%icons.length];
-      const x=startX()+pathWidth()*pct;
-      el.style.left=x+"px";
       obstacleLayer.appendChild(el);
-      return {el,pct,passed:false};
+      return {el,time,passed:false,x:w+160+i*42};
     });
   }
+  function setWorld(elapsed){
+    const w=stageWidth();
+    const speed=(w+260)/5200;
+    const roadX=-(elapsed*.18%64);
+    stage.style.setProperty("--road-x",roadX+"px");
 
-  function setBrideByProgress(progress){
-    const x=startX()+pathWidth()*progress;
-    bride.style.left=x+"px";
+    obstacles.forEach(o=>{
+      o.x=w+110-(elapsed-o.time)*speed;
+      o.el.style.setProperty("--x",o.x+"px");
+      if(o.x<-80) o.el.style.opacity="0";
+      else o.el.style.opacity="1";
+    });
+
+    const goalStart=duration-5200;
+    const goalX=elapsed<goalStart ? 0 : -((elapsed-goalStart)*speed);
+    goal.style.setProperty("--goal-x",goalX+"px");
   }
-
   function jump(){
     if(!running||jumping||finished)return;
     jumping=true;
@@ -1245,16 +1266,13 @@ audioHint.addEventListener("click", playMusic);
     bride.classList.add("is-jumping");
     setTimeout(()=>{bride.classList.remove("is-jumping");jumping=false},620);
   }
-
   function box(el,pad){
     const r=el.getBoundingClientRect();
     return {left:r.left+pad,right:r.right-pad,top:r.top+pad,bottom:r.bottom-pad};
   }
-
   function hit(a,b){
     return !(a.right<b.left||a.left>b.right||a.bottom<b.top||a.top>b.bottom);
   }
-
   function burst(){
     confetti.innerHTML="";
     for(let i=0;i<48;i++){
@@ -1265,18 +1283,16 @@ audioHint.addEventListener("click", playMusic);
     }
     setTimeout(()=>confetti.innerHTML="",1700);
   }
-
   function win(){
     running=false;
     finished=true;
     bride.classList.remove("walking","is-jumping");
-    setBrideByProgress(1);
     stage.classList.add("success");
     status.textContent="¡Misión cumplida! Carolina llegó con Ricardo.";
     replayBtn.classList.add("show");
     burst();
+    if(rafId) cancelAnimationFrame(rafId);
   }
-
   function fail(){
     running=false;
     finished=false;
@@ -1287,21 +1303,20 @@ audioHint.addEventListener("click", playMusic);
     replayBtn.classList.remove("show");
     if(rafId) cancelAnimationFrame(rafId);
   }
-
   function loop(now){
     if(!running)return;
     const elapsed=now-startTime;
-    const progress=Math.min(1,elapsed/duration);
-    setBrideByProgress(progress);
+    setWorld(elapsed);
 
     const b=box(bride,8);
     obstacles.forEach(o=>{
       if(o.passed||!running)return;
-      const ob=box(o.el,7);
-      if(ob.right < b.left-8){
+      if(o.x < brideX()-55){
         o.passed=true;
         o.el.classList.add("passed");
-      }else if(hit(b,ob) && !jumping){
+        return;
+      }
+      if(hit(b,box(o.el,7))&&!jumping){
         fail();
       }
     });
@@ -1309,49 +1324,33 @@ audioHint.addEventListener("click", playMusic);
     const secondsLeft=Math.max(0,Math.ceil((duration-elapsed)/1000));
     if(running) status.textContent="Camino al altar: "+secondsLeft+" segundos. Toca para brincar.";
 
-    if(progress>=1 && running){
+    if(elapsed>=duration&&running){
       win();
       return;
     }
     rafId=requestAnimationFrame(loop);
   }
-
   function start(){
     if(rafId) cancelAnimationFrame(rafId);
-    running=true;
-    finished=false;
-    jumping=false;
+    running=true;finished=false;jumping=false;
     stage.classList.remove("success");
     overlay.classList.add("hide");
     replayBtn.classList.remove("show");
     bride.classList.add("walking");
     makeObstacles();
-    setBrideByProgress(0);
     startTime=performance.now();
     status.textContent="Camino al altar: 30 segundos. Toca para brincar.";
     rafId=requestAnimationFrame(loop);
   }
-
   startBtn.addEventListener("click",start);
   replayBtn.addEventListener("click",start);
   stage.addEventListener("pointerdown",jump,{passive:true});
-  document.addEventListener("keydown",e=>{
-    if(e.code==="Space"&&running){
-      e.preventDefault();
-      jump();
-    }
-  });
-  window.addEventListener("resize",()=>{
-    if(!running){
-      setBrideByProgress(finished?1:0);
-      makeObstacles();
-    }
-  });
-
+  document.addEventListener("keydown",e=>{if(e.code==="Space"&&running){e.preventDefault();jump()}});
+  window.addEventListener("resize",()=>{if(!running)makeObstacles()});
   makeObstacles();
-  setBrideByProgress(0);
 })();
 </script>
+
 
 
 </body>
