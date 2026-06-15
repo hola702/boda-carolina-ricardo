@@ -11,16 +11,16 @@
 <meta property="og:site_name" content="Boda Carolina & Ricardo">
 <meta property="og:title" content="Carolina & Ricardo | Invitación de boda">
 <meta property="og:description" content="24 Octubre 2026">
-<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=58">
+<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=59">
 
-<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=58">
-<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=58">
+<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=59">
+<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=59">
 <meta property="og:image:type" content="image/jpeg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Carolina & Ricardo | Invitación de boda">
 <meta name="twitter:description" content="24 Octubre 2026">
-<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=58">
+<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=59">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -779,10 +779,11 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 }
 
 
-/* v58: carrete interactivo con dedo/mouse, sin bloquear carga */
+/* v59: carrete interactivo + juego final */
 .film-reel{
   touch-action:pan-y;
   cursor:grab;
+  user-select:none;
 }
 .film-reel.is-dragging{
   cursor:grabbing;
@@ -796,6 +797,137 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   animation:none!important;
   transform:translate3d(var(--sprocket-x,0px),0,0);
   will-change:transform;
+}
+
+/* Juego: Encuentra el boleto dorado */
+.ticket-game{
+  background:#080706;
+  color:var(--gold2);
+  text-align:center;
+  padding:42px 18px 38px;
+  border-top:1px solid rgba(195,154,97,.24);
+  border-bottom:1px solid rgba(195,154,97,.24);
+}
+.ticket-game .game-inner{
+  width:min(680px,100%);
+  margin:0 auto;
+}
+.ticket-game h2{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(2.2rem,8vw,3.8rem);
+  line-height:1;
+  margin:0 0 10px;
+  color:#e1bd7b;
+}
+.ticket-game p{
+  font-family:'Special Elite',monospace;
+  font-size:.76rem;
+  line-height:1.55;
+  letter-spacing:.04em;
+  color:#caa873;
+  margin:0 auto 22px;
+  max-width:430px;
+  text-transform:uppercase;
+}
+.ticket-row{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+  margin:0 auto 18px;
+  max-width:580px;
+}
+.ticket-card{
+  position:relative;
+  min-height:96px;
+  border:1px solid rgba(195,154,97,.48);
+  background:
+    radial-gradient(circle at 0 50%, #080706 0 8px, transparent 9px),
+    radial-gradient(circle at 100% 50%, #080706 0 8px, transparent 9px),
+    linear-gradient(135deg,#1a120c,#3a2716 55%,#1a120c);
+  color:#ddb879;
+  border-radius:10px;
+  font-family:'Special Elite',monospace;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  font-size:.66rem;
+  padding:10px 6px;
+  box-shadow:0 14px 26px rgba(0,0,0,.25);
+  cursor:pointer;
+  transition:transform .22s ease, border-color .22s ease, background .22s ease;
+}
+.ticket-card:before,
+.ticket-card:after{
+  content:"";
+  position:absolute;
+  left:12px;
+  right:12px;
+  height:1px;
+  background:repeating-linear-gradient(90deg,rgba(217,183,122,.55) 0 5px,transparent 5px 10px);
+}
+.ticket-card:before{top:12px}
+.ticket-card:after{bottom:12px}
+.ticket-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(217,183,122,.8);
+}
+.ticket-card.revealed{
+  pointer-events:none;
+  transform:translateY(-2px) scale(1.02);
+}
+.ticket-card.winner{
+  background:linear-gradient(135deg,#7b4a12,#f2c66f 45%,#8b5817);
+  color:#160d07;
+  border-color:#f2c66f;
+}
+.ticket-card .ticket-front{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+  min-height:76px;
+}
+.ticket-card .ticket-result{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+  min-height:76px;
+  font-size:.78rem;
+}
+.ticket-card.revealed .ticket-front{display:none}
+.ticket-card.revealed .ticket-result{display:flex}
+.game-message{
+  min-height:42px;
+  font-family:'Special Elite',monospace;
+  color:#e8c98a;
+  font-size:.8rem;
+  line-height:1.45;
+  letter-spacing:.04em;
+  margin-top:8px;
+}
+.game-reset{
+  display:none;
+  margin-top:10px;
+  border:1px solid rgba(195,154,97,.45);
+  background:#15100c;
+  color:var(--gold2);
+  border-radius:999px;
+  padding:9px 18px;
+  font-family:'Special Elite',monospace;
+  font-size:.68rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.game-reset.show{
+  display:inline-flex;
+}
+@media(max-width:560px){
+  .ticket-game{padding:36px 14px 34px}
+  .ticket-row{grid-template-columns:repeat(5,1fr);gap:6px}
+  .ticket-card{min-height:82px;font-size:.52rem;border-radius:8px;padding:8px 3px}
+  .ticket-card .ticket-front,
+  .ticket-card .ticket-result{min-height:66px}
 }
 
 </style>
@@ -911,6 +1043,23 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   </div>
 </section>
 
+
+<section class="section ticket-game noise" id="juego-boleto">
+  <div class="game-inner">
+    <h2>Encuentra el boleto dorado</h2>
+    <p>Elige un boleto de la función. Si encuentras el dorado, ya tienes pase directo a la fiesta.</p>
+    <div class="ticket-row" id="ticketRow">
+      <button class="ticket-card" type="button"><span class="ticket-front">Boleto<br>01</span><span class="ticket-result"></span></button>
+      <button class="ticket-card" type="button"><span class="ticket-front">Boleto<br>02</span><span class="ticket-result"></span></button>
+      <button class="ticket-card" type="button"><span class="ticket-front">Boleto<br>03</span><span class="ticket-result"></span></button>
+      <button class="ticket-card" type="button"><span class="ticket-front">Boleto<br>04</span><span class="ticket-result"></span></button>
+      <button class="ticket-card" type="button"><span class="ticket-front">Boleto<br>05</span><span class="ticket-result"></span></button>
+    </div>
+    <div class="game-message" id="gameMessage">Cinco boletos. Una función especial.</div>
+    <button class="game-reset" id="gameReset" type="button">Jugar otra vez</button>
+  </div>
+</section>
+
 <footer class="section footer noise">
   <img class="bg-img" src="activos/pie-depagina.jpg" alt="">
   <div class="content">
@@ -982,39 +1131,6 @@ audioHint.addEventListener("click", playMusic);
 })();
 </script>
 
-
-
-
-
-
-
-<script>
-(function(){
-  const audio = document.getElementById("bgMusic");
-  const audioHint = document.getElementById("audioHint");
-  if(!audio || !audioHint) return;
-
-  let started = false;
-
-  function markPlaying(){
-    audioHint.textContent = "♫ Música activa";
-    audioHint.classList.add("is-playing");
-  }
-
-  async function startMusic(){
-    if(started && !audio.paused) return;
-    try{
-      audio.volume = 0.82;
-      await audio.play();
-      started = true;
-      markPlaying();
-    }catch(e){
-      audioHint.textContent = "♫ Activar música";
-    }
-  }
-
-<!-- v58 interactive script marker -->
-
 <script>
 (function(){
   const reel = document.querySelector(".film-reel");
@@ -1048,7 +1164,7 @@ audioHint.addEventListener("click", playMusic);
     normalize();
     photoTrack.style.setProperty("--photo-x", photoX.toFixed(2) + "px");
 
-    /* Los orificios se mueven en sentido opuesto a las fotografías */
+    // Los orificios se desplazan en sentido opuesto a las fotografías.
     const sprocketX = -photoX;
     sprocketRows.forEach(row=>{
       row.style.setProperty("--sprocket-x", sprocketX.toFixed(2) + "px");
@@ -1085,7 +1201,7 @@ audioHint.addEventListener("click", playMusic);
     lastPointerTime = performance.now();
     velocity = 0;
     reel.classList.add("is-dragging");
-    reel.setPointerCapture?.(pointerId);
+    if(reel.setPointerCapture) reel.setPointerCapture(pointerId);
   }
 
   function onPointerMove(e){
@@ -1110,7 +1226,7 @@ audioHint.addEventListener("click", playMusic);
     dragging = false;
     reel.classList.remove("is-dragging");
     resumeAt = performance.now() + 900;
-    try{ reel.releasePointerCapture?.(pointerId); }catch(err){}
+    try{ if(reel.releasePointerCapture) reel.releasePointerCapture(pointerId); }catch(err){}
     pointerId = null;
   }
 
@@ -1146,3 +1262,52 @@ audioHint.addEventListener("click", playMusic);
   requestAnimationFrame(animate);
 })();
 </script>
+
+<script>
+(function(){
+  const row = document.getElementById("ticketRow");
+  const message = document.getElementById("gameMessage");
+  const reset = document.getElementById("gameReset");
+  if(!row || !message || !reset) return;
+
+  const cards = Array.from(row.querySelectorAll(".ticket-card"));
+  let winner = Math.floor(Math.random() * cards.length);
+  let finished = false;
+
+  function resetGame(){
+    winner = Math.floor(Math.random() * cards.length);
+    finished = false;
+    message.textContent = "Cinco boletos. Una función especial.";
+    reset.classList.remove("show");
+    cards.forEach((card, i)=>{
+      card.classList.remove("revealed","winner");
+      card.querySelector(".ticket-result").textContent = "";
+      card.disabled = false;
+    });
+  }
+
+  cards.forEach((card, i)=>{
+    card.addEventListener("click", function(){
+      if(finished) return;
+
+      card.classList.add("revealed");
+      if(i === winner){
+        card.classList.add("winner");
+        card.querySelector(".ticket-result").textContent = "Dorado";
+        message.textContent = "¡Corte! Este invitado sí viene a la fiesta.";
+        finished = true;
+        reset.classList.add("show");
+        cards.forEach(c=>c.disabled = true);
+      }else{
+        card.querySelector(".ticket-result").textContent = "Toma 2";
+        message.textContent = "Toma dos 🎬 intenta otra vez.";
+        card.disabled = true;
+      }
+    });
+  });
+
+  reset.addEventListener("click", resetGame);
+})();
+</script>
+</body>
+</html>
