@@ -12,16 +12,16 @@
 <meta property="og:site_name" content="Boda Carolina & Ricardo">
 <meta property="og:title" content="Carolina & Ricardo | Invitación de boda">
 <meta property="og:description" content="24 Octubre 2026">
-<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=65">
+<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=66">
 
-<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=65">
-<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=65">
+<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=66">
+<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=66">
 <meta property="og:image:type" content="image/jpeg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Carolina & Ricardo | Invitación de boda">
 <meta name="twitter:description" content="24 Octubre 2026">
-<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=65">
+<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=66">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -218,7 +218,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   inset:0;
   height:34px;
   width:300%;
-  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=65");
+  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=66");
   background-repeat:repeat-x;
   background-size:auto 34px;
   background-position:left center;
@@ -820,7 +820,8 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 
 
 
-/* v65: juego estilo Mario/Circus - la pantalla se desplaza */
+
+/* v66: juego estilo Mario/Circus - meta iluminada al llegar */
 .runner-game{background:#080706;color:var(--gold2);text-align:center;padding:42px 16px 40px;border-top:1px solid rgba(195,154,97,.24);border-bottom:1px solid rgba(195,154,97,.24)}
 .runner-inner{width:min(690px,100%);margin:0 auto}
 .runner-kicker{font-family:'Special Elite',monospace;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;color:#b9925e;margin-bottom:8px}
@@ -832,7 +833,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 .runner-bg:after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:repeating-linear-gradient(90deg,rgba(195,154,97,.08) 0 10px,transparent 10px 46px);transform:translateX(var(--road-x,0px));will-change:transform}
 .street-mark{position:absolute;bottom:76px;width:64px;height:1px;background:rgba(217,183,122,.2);transform:translateX(var(--road-x,0px));will-change:transform}
 .mark-a{left:12%}.mark-b{left:48%;bottom:98px}.mark-c{left:78%;bottom:65px}
-.runner-goal{position:absolute;right:-120px;bottom:54px;width:88px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:1px;z-index:2;transform:translateX(var(--goal-x,0px));will-change:transform}
+.runner-goal{position:absolute;right:-130px;bottom:54px;width:92px;height:94px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:1px;z-index:3;transform:translateX(var(--goal-x,0px));will-change:transform;pointer-events:none}
 .church{font-size:2.15rem;line-height:1;filter:drop-shadow(0 5px 10px rgba(0,0,0,.45))}
 .groom{font-size:1.6rem;line-height:1;transform:translateY(4px)}
 .bride{position:absolute;left:34px;bottom:54px;width:44px;height:52px;font-size:2.05rem;line-height:52px;z-index:5;filter:drop-shadow(0 7px 8px rgba(0,0,0,.45));will-change:transform}
@@ -843,6 +844,13 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 .runner-obstacles{position:absolute;inset:0;z-index:4;pointer-events:none}
 .runner-obstacle{position:absolute;bottom:55px;width:42px;height:42px;font-size:1.8rem;line-height:42px;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45));transform:translateX(var(--x,0px));will-change:transform}
 .runner-obstacle.passed{opacity:.22;transform:translateX(var(--x,0px)) scale(.86)}
+.runner-light{position:absolute;inset:0;z-index:6;pointer-events:none;opacity:0;background:radial-gradient(circle at 72% 48%,rgba(255,222,144,.54),rgba(217,183,122,.20) 30%,transparent 62%),linear-gradient(180deg,rgba(255,228,167,.22),transparent 58%);transition:opacity .45s ease}
+.runner-stage.success{box-shadow:0 0 34px rgba(217,183,122,.35),0 16px 36px rgba(0,0,0,.36);border-color:rgba(243,211,145,.9)}
+.runner-stage.success .runner-light{opacity:1;animation:sceneGlow 1.4s ease-in-out infinite alternate}
+.runner-stage.success .runner-bg:before{background:repeating-linear-gradient(90deg,rgba(255,222,144,.95) 0 34px,transparent 34px 64px)}
+.runner-stage.success .runner-goal{z-index:7}
+.runner-stage.success .church,.runner-stage.success .groom{animation:goalPulse .8s ease-in-out 2;filter:drop-shadow(0 0 16px rgba(255,222,144,.85))}
+@keyframes sceneGlow{from{opacity:.55}to{opacity:.95}}
 .runner-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(8,7,6,.72);z-index:8;backdrop-filter:blur(2px)}
 .runner-overlay.hide{display:none}
 .overlay-title{font-family:'Special Elite',monospace;text-transform:uppercase;color:#e8c98a;letter-spacing:.06em;font-size:.8rem}
@@ -853,7 +861,6 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 .confetti i{position:absolute;top:-12px;width:7px;height:12px;background:#d9b77a;animation:confettiFall 1.25s ease-in forwards}
 .confetti i:nth-child(3n){background:#c39a61}.confetti i:nth-child(4n){background:#f3d391}.confetti i:nth-child(5n){border-radius:50%}
 @keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(260px) rotate(320deg);opacity:0}}
-.runner-stage.success .church,.runner-stage.success .groom{animation:goalPulse .8s ease-in-out 2}
 @keyframes goalPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.16)}}
 @media(max-width:560px){.runner-game{padding:36px 12px 34px}.runner-stage{height:215px;border-radius:14px}.bride{left:28px;bottom:52px;font-size:1.9rem}.runner-goal{bottom:52px;width:78px}.church{font-size:1.9rem}.groom{font-size:1.45rem}.runner-obstacle{bottom:53px;font-size:1.65rem}}
 
@@ -863,13 +870,13 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 </head>
 <body>
 <main class="page">
-<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=65" type="audio/mpeg"></audio>
+<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=66" type="audio/mpeg"></audio>
 
 <button class="audioHint" id="audioHint" type="button">♫ Activar música</button>
 
 <section class="section hero noise">
-  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=65" alt="">
-  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=65" alt="">
+  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=66" alt="">
+  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=66" alt="">
   <div class="content">
     <div class="kicker">Hay historias que escriben<br>su propia película</div>
     <div class="divider">♡</div>
@@ -974,6 +981,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
 
 
 
+
 <section class="section runner-game noise" id="mision-final">
   <div class="runner-inner">
     <div class="runner-kicker">Misión final</div>
@@ -987,13 +995,15 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
         <span class="street-mark mark-c"></span>
       </div>
 
+      <div class="runner-obstacles" id="runnerObstacles" aria-hidden="true"></div>
+      <div class="bride" id="bride" aria-hidden="true">👰‍♀️</div>
+
       <div class="runner-goal" id="runnerGoal" aria-hidden="true">
         <div class="church">⛪</div>
         <div class="groom">🤵</div>
       </div>
 
-      <div class="runner-obstacles" id="runnerObstacles" aria-hidden="true"></div>
-      <div class="bride" id="bride" aria-hidden="true">👰‍♀️</div>
+      <div class="runner-light" aria-hidden="true"></div>
 
       <div class="runner-overlay" id="runnerOverlay">
         <div class="overlay-title">¿Lista para la toma final?</div>
@@ -1009,6 +1019,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
     </div>
   </div>
 </section>
+
 
 
 
@@ -1210,6 +1221,7 @@ audioHint.addEventListener("click", playMusic);
 
 
 
+
 <script>
 (function(){
   const stage=document.getElementById("runnerStage");
@@ -1238,7 +1250,7 @@ audioHint.addEventListener("click", playMusic);
       el.className="runner-obstacle";
       el.textContent=icons[i%icons.length];
       obstacleLayer.appendChild(el);
-      return {el,time,passed:false,x:w+160+i*42};
+      return {el,time,passed:false,x:w+180+i*42};
     });
   }
   function setWorld(elapsed){
@@ -1248,14 +1260,22 @@ audioHint.addEventListener("click", playMusic);
     stage.style.setProperty("--road-x",roadX+"px");
 
     obstacles.forEach(o=>{
-      o.x=w+110-(elapsed-o.time)*speed;
+      o.x=w+120-(elapsed-o.time)*speed;
       o.el.style.setProperty("--x",o.x+"px");
       if(o.x<-80) o.el.style.opacity="0";
       else o.el.style.opacity="1";
     });
 
-    const goalStart=duration-5200;
-    const goalX=elapsed<goalStart ? 0 : -((elapsed-goalStart)*speed);
+    // La iglesia y Ricardo son la meta: no aparecen durante los obstáculos.
+    const goalStart=duration-3800;
+    let goalX=0;
+    if(elapsed<goalStart){
+      goalX=0;
+      goal.style.opacity="0";
+    }else{
+      goal.style.opacity="1";
+      goalX=-((elapsed-goalStart)*speed);
+    }
     goal.style.setProperty("--goal-x",goalX+"px");
   }
   function jump(){
@@ -1275,19 +1295,21 @@ audioHint.addEventListener("click", playMusic);
   }
   function burst(){
     confetti.innerHTML="";
-    for(let i=0;i<48;i++){
+    for(let i=0;i<56;i++){
       const p=document.createElement("i");
       p.style.left=Math.random()*100+"%";
       p.style.animationDelay=Math.random()*.32+"s";
       confetti.appendChild(p);
     }
-    setTimeout(()=>confetti.innerHTML="",1700);
+    setTimeout(()=>confetti.innerHTML="",1900);
   }
   function win(){
     running=false;
     finished=true;
     bride.classList.remove("walking","is-jumping");
     stage.classList.add("success");
+    goal.style.opacity="1";
+    goal.style.setProperty("--goal-x","-260px");
     status.textContent="¡Misión cumplida! Carolina llegó con Ricardo.";
     replayBtn.classList.add("show");
     burst();
@@ -1337,6 +1359,8 @@ audioHint.addEventListener("click", playMusic);
     overlay.classList.add("hide");
     replayBtn.classList.remove("show");
     bride.classList.add("walking");
+    goal.style.opacity="0";
+    goal.style.setProperty("--goal-x","0px");
     makeObstacles();
     startTime=performance.now();
     status.textContent="Camino al altar: 30 segundos. Toca para brincar.";
@@ -1347,9 +1371,11 @@ audioHint.addEventListener("click", playMusic);
   stage.addEventListener("pointerdown",jump,{passive:true});
   document.addEventListener("keydown",e=>{if(e.code==="Space"&&running){e.preventDefault();jump()}});
   window.addEventListener("resize",()=>{if(!running)makeObstacles()});
+  goal.style.opacity="0";
   makeObstacles();
 })();
 </script>
+
 
 
 
