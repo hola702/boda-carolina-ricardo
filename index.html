@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html lang="es">
 <head>
@@ -12,16 +11,16 @@
 <meta property="og:site_name" content="Boda Carolina & Ricardo">
 <meta property="og:title" content="Carolina & Ricardo | Invitación de boda">
 <meta property="og:description" content="24 Octubre 2026">
-<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=69">
+<meta property="og:url" content="https://hola702.github.io/boda-carolina-ricardo/?v=71">
 
-<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=69">
-<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=69">
+<meta property="og:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=71">
+<meta property="og:image:secure_url" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=71">
 <meta property="og:image:type" content="image/jpeg">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Carolina & Ricardo | Invitación de boda">
 <meta name="twitter:description" content="24 Octubre 2026">
-<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=69">
+<meta name="twitter:image" content="https://hola702.github.io/boda-carolina-ricardo/activos/boleto.jpg?v=71">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -218,7 +217,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   inset:0;
   height:34px;
   width:300%;
-  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=69");
+  background-image:url("activos/ollos-cinta-serie-superior.jpg?v=71");
   background-repeat:repeat-x;
   background-size:auto 34px;
   background-position:left center;
@@ -895,19 +894,147 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   to{filter:drop-shadow(0 0 22px rgba(255,222,144,1))}
 }
 
+
+/* v71: opciones de hospedaje en ventana emergente */
+.hotel-modal{
+  position:fixed;
+  inset:0;
+  z-index:120;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+.hotel-modal.show{
+  display:flex;
+}
+.hotel-modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(3px);
+}
+.hotel-modal-card{
+  position:relative;
+  z-index:2;
+  width:min(620px,100%);
+  max-height:min(82vh,720px);
+  overflow:auto;
+  background:linear-gradient(135deg,#100c09,#21170f 58%,#0b0806);
+  border:1px solid rgba(195,154,97,.5);
+  border-radius:18px;
+  padding:30px 18px 20px;
+  color:var(--gold2);
+  text-align:center;
+  box-shadow:0 24px 70px rgba(0,0,0,.65);
+}
+.hotel-modal-close{
+  position:absolute;
+  top:10px;
+  right:12px;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:1px solid rgba(195,154,97,.45);
+  background:#15100c;
+  color:var(--gold2);
+  font-size:1.35rem;
+  line-height:1;
+  cursor:pointer;
+}
+.hotel-modal .hotels-kicker{
+  font-family:'Special Elite',monospace;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:.66rem;
+  color:#b9925e;
+  margin-bottom:8px;
+}
+.hotel-modal h2{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(2.25rem,8vw,3.7rem);
+  line-height:1;
+  margin:0 0 8px;
+  color:#e1bd7b;
+}
+.hotel-modal .hotels-intro{
+  font-family:'Special Elite',monospace;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  font-size:.68rem;
+  line-height:1.5;
+  color:#caa873;
+  max-width:430px;
+  margin:0 auto 18px;
+}
+.hotel-list{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:9px;
+}
+.hotel-option{
+  position:relative;
+  display:block;
+  text-decoration:none;
+  color:#d9b77a;
+  border:1px solid rgba(195,154,97,.34);
+  border-radius:13px;
+  padding:14px 14px 12px;
+  background:rgba(12,9,7,.72);
+  text-align:left;
+}
+.hotel-option.featured,
+.hotel-option.premium{
+  border-color:rgba(243,211,145,.68);
+  background:rgba(46,31,16,.72);
+}
+.hotel-option strong{
+  display:block;
+  font-family:'Special Elite',monospace;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  font-size:.72rem;
+  line-height:1.35;
+  color:#e5c281;
+  padding-right:86px;
+}
+.hotel-option small{
+  display:block;
+  color:#d5b888;
+  font-size:.86rem;
+  margin-top:6px;
+}
+.hotel-option .hotel-badge{
+  position:absolute;
+  top:12px;
+  right:10px;
+  border:1px solid rgba(243,211,145,.65);
+  border-radius:999px;
+  padding:4px 8px;
+  font-family:'Special Elite',monospace;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  font-size:.48rem;
+  color:#f3d391;
+  background:#15100c;
+}
+body.modal-open{
+  overflow:hidden;
+}
+
 </style>
 
 
 </head>
 <body>
 <main class="page">
-<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=69" type="audio/mpeg"></audio>
+<audio id="bgMusic" loop preload="metadata" playsinline><source src="audio/harvest-moon.mp3?v=71" type="audio/mpeg"></audio>
 
 <button class="audioHint" id="audioHint" type="button">♫ Activar música</button>
 
 <section class="section hero noise">
-  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=69" alt="">
-  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=69" alt="">
+  <img class="bg-img hero-base" src="activos/encabezado.jpg?v=71" alt="">
+  <img class="bg-img hero-flash" src="activos/encabezado2.jpg?v=71" alt="">
   <div class="content">
     <div class="kicker">Hay historias que escriben<br>su propia película</div>
     <div class="divider">♡</div>
@@ -994,7 +1121,7 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
   <div class="content extras-grid">
     <div class="extra"><img class="reveal" src="iconos/dress.png" alt=""><h3>Código de vestimenta</h3><p>Etiqueta rigurosa</p></div>
     <div class="extra"><img class="reveal" src="iconos/regalo.png" alt=""><h3>Mesa de regalos</h3><p>Tu presencia es nuestro mejor regalo</p><a href="https://www.amazon.com.mx/wedding/guest-view/2S69L9AL68ZQD" target="_blank">Ver más</a></div>
-    <div class="extra"><img class="reveal" src="iconos/cama.png" alt=""><h3>Hospedaje</h3><p>Opciones para tu estancia</p><a href="https://www.google.com/maps/search/?api=1&query=hoteles%20cerca%20de%20Pinar%20de%20la%20Venta%20Zapopan" target="_blank">Ver más</a></div>
+    <div class="extra"><img class="reveal" src="iconos/cama.png" alt=""><h3>Hospedaje</h3><p>Opciones para tu estancia</p><a href="#hospedaje" id="openHotels">Ver más</a></div>
     <div class="extra"><img class="reveal" src="iconos/camara.png" alt=""><h3>Comparte tus fotos</h3><p>Sube tus recuerdos al álbum</p><a href="https://photos.app.goo.gl/8xwqcfBT6UX9KDf78" target="_blank">Ver más</a></div>
   </div>
 </section>
@@ -1064,6 +1191,51 @@ body{margin:0;background:#030303;color:var(--cream);font-family:'Cormorant Garam
     <p class="party">Habrá mucha kombucha,<br>tequila y festejo.</p>
   </div>
 </footer>
+
+<div class="hotel-modal" id="hotelModal" aria-hidden="true">
+  <div class="hotel-modal-backdrop" id="hotelModalBackdrop"></div>
+  <div class="hotel-modal-card" role="dialog" aria-modal="true" aria-labelledby="hotelModalTitle">
+    <button class="hotel-modal-close" id="hotelModalClose" type="button" aria-label="Cerrar">×</button>
+    <div class="hotels-kicker">Hospedaje recomendado</div>
+    <h2 id="hotelModalTitle">Hoteles cerca de Ciudad Granja</h2>
+    <p class="hotels-intro">Opciones seleccionadas cerca de la recepción para facilitar tu traslado.</p>
+
+    <div class="hotel-list">
+      <a class="hotel-option featured" href="https://www.google.com/maps/search/?api=1&query=Fiesta%20Inn%20Guadalajara%20Poniente" target="_blank">
+        <span class="hotel-badge">Recomendado</span>
+        <strong>Fiesta Inn Guadalajara Poniente</strong>
+        <small>Aprox. 5 min de la recepción</small>
+      </a>
+
+      <a class="hotel-option" href="https://www.google.com/maps/search/?api=1&query=Holiday%20Inn%20Express%20Guadalajara%20Vallarta%20Poniente" target="_blank">
+        <strong>Holiday Inn Express Guadalajara Vallarta Poniente</strong>
+        <small>Aprox. 6 min de la recepción</small>
+      </a>
+
+      <a class="hotel-option" href="https://www.google.com/maps/search/?api=1&query=Avid%20Hotel%20Guadalajara%20Vallarta%20Poniente" target="_blank">
+        <strong>Avid Hotel Guadalajara Vallarta Poniente</strong>
+        <small>Aprox. 6 min de la recepción</small>
+      </a>
+
+      <a class="hotel-option" href="https://www.google.com/maps/search/?api=1&query=Cypres%20Hotel%20%26%20Suites%20Zapopan" target="_blank">
+        <strong>Cypres Hotel &amp; Suites</strong>
+        <small>Aprox. 4 min de la recepción</small>
+      </a>
+
+      <a class="hotel-option" href="https://www.google.com/maps/search/?api=1&query=Core%20Suites%20Zapopan" target="_blank">
+        <strong>Core Suites</strong>
+        <small>Aprox. 7 min de la recepción</small>
+      </a>
+
+      <a class="hotel-option premium" href="https://www.google.com/maps/search/?api=1&query=Hard%20Rock%20Hotel%20Guadalajara" target="_blank">
+        <span class="hotel-badge">Premium</span>
+        <strong>Hard Rock Hotel Guadalajara</strong>
+        <small>Aprox. 15 min de la recepción</small>
+      </a>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <script>
@@ -1473,6 +1645,37 @@ audioHint.addEventListener("click", playMusic);
 
 
 
+
+
+<script>
+(function(){
+  const openBtn=document.getElementById("openHotels");
+  const modal=document.getElementById("hotelModal");
+  const closeBtn=document.getElementById("hotelModalClose");
+  const backdrop=document.getElementById("hotelModalBackdrop");
+  if(!openBtn||!modal||!closeBtn||!backdrop)return;
+
+  function openModal(e){
+    e.preventDefault();
+    modal.classList.add("show");
+    modal.setAttribute("aria-hidden","false");
+    document.body.classList.add("modal-open");
+  }
+
+  function closeModal(){
+    modal.classList.remove("show");
+    modal.setAttribute("aria-hidden","true");
+    document.body.classList.remove("modal-open");
+  }
+
+  openBtn.addEventListener("click",openModal);
+  closeBtn.addEventListener("click",closeModal);
+  backdrop.addEventListener("click",closeModal);
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"&&modal.classList.contains("show"))closeModal();
+  });
+})();
+</script>
 
 </body>
 </html>
